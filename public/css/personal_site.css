@@ -1,0 +1,289 @@
+/*********************************	MOBILE STYLES **********************************/
+
+body {
+	background-color: #CEE5F2;
+}
+
+h1 {
+	font-family: 'Architects Daughter', cursive;
+	color: #637081;
+}
+
+p {
+	color: #536B78;
+}
+
+a {
+	color:black;
+}
+
+a:hover {
+	color: #536B78;
+	text-decoration: none;
+}
+i {
+	padding-left: 2%;
+	color: black;
+}
+
+i:hover {
+	color: #536B78; 
+}
+
+.navbar.navbar-fixed-top {
+	background-color: #ACCBE1;
+	width: 100%;
+}
+
+.navbar-header {
+	width: 100%;
+	float: left;
+}
+
+.matt {
+	font-family: 'Permanent Marker', cursive;
+	font-size: 4em;
+	margin: auto;
+	width: auto;
+	padding-left: 2%;
+}
+
+.matt a {
+	color: black;
+}
+
+.matt a:hover {
+	text-decoration: none;
+}
+
+nav ul li {
+	width: 30%;
+}
+
+nav ul li a{
+	color: #536B78; 
+	font-family: 'VT323', monospace;
+	font-size: 2em;
+	width: auto;
+	text-transform: uppercase;
+	text-align: center;
+}	
+
+.nav>li>a:hover {
+	color: white;
+	background-color: #536B78;
+}
+
+main {
+	margin: auto;
+	padding-top: 30%;
+	padding-bottom: 10%;
+	padding-left: 5%;	
+	padding-right: 5%;	
+}
+
+main img {
+	width: 50%;
+	height: 50%;
+	margin: auto;
+}
+
+main p {
+	font-family: copperplate;
+	color: black;
+}
+
+.home p{
+	padding: 5%;
+	margin: auto;
+	width: auto;
+}
+
+.img-thumbnail{
+	margin-top: 50px;
+	display: block;
+}
+
+.quest{
+	padding-top: 150px;
+}
+
+dd {
+	padding-bottom: 30px;
+}
+
+.thumbnail {
+	background-color: #536B78;
+}
+
+.caption p, h3{
+	font-family: 'Coming Soon', cursive;
+}
+
+a.btn.btn-primary{
+	color: black;
+	background-color: #CEE5F2;
+	border-color: black;
+}
+
+a.btn.btn-primary:hover{
+	color: #ACCBE1;
+	background-color: black;
+	border-color: #ACCBE1;
+}
+
+.page-footer p{
+	font-family: 'Coming Soon', cursive;
+	text-transform: uppercase;
+	font-weight: bold;
+	display: inline;
+	font-size: 1em;
+	text-align: center;
+}
+
+.navbar-fixed-bottom {
+	background-color: #ACCBE1;
+}
+
+.row p{
+	color: black;
+}
+
+
+/***************************************	TABLET STYLES 	**********************************/
+
+@media (min-width:768px) {
+
+
+
+
+
+
+
+
+
+}
+
+
+/***************************************	DESKTOP STYLES 	**********************************/
+
+@media (min-width:940px) {      	
+
+
+body {
+	background-color: #CEE5F2;
+	width: 75%;
+	margin:auto;
+	display: block;
+	padding-top: 75px;
+	padding-bottom: 75px;
+}
+
+h1 {
+	font-family: 'Architects Daughter', cursive;
+	color: #637081
+}
+
+p {
+	width: auto;
+	color: #536B78;
+}
+
+nav {
+	padding-right:5%;
+}
+
+
+.navbar.navbar-fixed-top {
+	background-color: #ACCBE1;
+}
+
+.navbar-header {
+	width: 30%;
+}
+
+.matt {
+	font-family: 'Permanent Marker', cursive;
+	font-size: 4em;
+	margin: auto;
+	width: auto;
+	padding-left: 10px;
+}
+
+.matt a {
+	color: black;
+}
+
+.matt a:hover {
+	text-decoration: none;
+}
+
+nav {
+	float: left;
+}
+
+nav ul li {
+	width: auto;
+}
+
+nav ul li a{
+	color: #536B78; 
+	font-family: 'VT323', monospace;
+	font-size: 2em;
+	text-transform: uppercase;
+}	
+
+.nav>li>a:hover {
+	color: white;
+	background-color: #536B78;
+	width: auto;
+}
+
+main {
+	padding-top: 5%;
+	padding-bottom: 20%;	
+}
+
+main img {
+	width: 40%;
+	height: 40%;
+}
+
+.home p{
+	font-size: 2em;
+	width: auto;
+	margin: auto;
+}
+
+.quest {
+	padding-top: 10%;
+
+}
+
+dt {
+	font-size: 2em;
+}
+
+footer{
+	clear: all;
+}
+
+.navbar-fixed-bottom {
+	background-color: #ACCBE1;
+
+}
+
+.page-footer p{
+	font-family: 'Coming Soon', cursive;
+	text-transform: uppercase;
+	font-weight: bold;
+	display: inline;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+
+
+
+}
+

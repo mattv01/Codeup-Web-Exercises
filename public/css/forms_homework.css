@@ -1,0 +1,24 @@
+body {
+	background-color: honeydew;
+}
+
+main {
+	background-color: #000;
+}
+
+.make_pizza {
+	background-color: #F00;
+}
+
+.make_pizza button {
+	font-family: copperplate;
+	background-color: orange;
+}
+
+.new_user {
+	background-color: #0F0;
+}
+
+.search_home {
+	background-color: #00F;
+}

@@ -1,0 +1,96 @@
+body {
+	background-color: #3EFFBD;
+	/* font-family: 'Indie Flower', cursive; */  
+	font-family: 'Architects Daughter', cursive;
+    font-size: 28px;
+}
+
+h1 {
+    font-family: 'VT323', monospace;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+h2 {
+	font-family: copperplate;
+}
+
+.info a {
+	text-decoration: none;
+	color:black;
+}
+
+.info a:hover {
+	color:red;
+}
+
+.info span {
+    font-family: 'Chewy', cursive;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #3E1B70;
+}
+
+.quote blockquote {
+	color: crimson;
+    font-family: 'Josefin Slab', serif;
+    font-size: 40px;
+}
+
+li {
+    font-family: 'Permanent Marker', cursive;
+    color: #165942;
+    list-style: square;
+}
+
+.lamp li {
+	list-style: none;
+}
+
+.food li {
+	list-style: decimal;
+}
+
+.questions dt {    
+	font-family: 'Coming Soon', cursive;
+	font-weight: bolder;
+}
+
+.questions dd {
+	font-family: 'Indie Flower', cursive;
+	text-transform: uppercase;
+	color: #B85E2D;
+	font-weight: lighter;
+}
+
+.sites li a {
+	list-style: square;
+	color:#000;
+	text-decoration: none;
+}
+
+.sites li a:hover {
+	color:#FFF;
+}
+
+.vehicle img {
+	width: 55%;
+}
+
+.hextable table, th, td {
+   border: 2px solid black;
+}	
+
+.hextable td, th {
+	text-align: center;
+	padding: 10px;
+}
+
+.hextable th {
+	text-decoration: underline;
+}
+
+a {
+	color: red;
+}
+
