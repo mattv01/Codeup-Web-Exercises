@@ -1,51 +1,68 @@
 "use strict";
 
 var total = 60;
+
+var discountForLuckyNumber0 = 0;
+var discountForLuckyNumber1 = .70;
+var discountForLuckyNumber2 = .25;
+var discountForLuckyNumber3 = .35;
+var discountForLuckyNumber4 = .50;
+var discountForLuckyNumber5 = 1;
+
 var luckyNumber = Math.floor(Math.random()* 6);
+
 switch (luckyNumber) {
 	case luckyNumber = 0:
-		var discount = 0;
+		var discount = discountForLuckyNumber0;
 		var finalTotal = total * (1 - discount);
 		console.log("Your lucky number was " + luckyNumber + "...");
 		console.log("You get no discount...");
-		console.log("Your total is $" + total + ".");
+		console.log("Your total is $" + total.toFixed(2) + ".");
 		break;
 	case luckyNumber = 1:
-		var discount = .10;
+		var discount = discountForLuckyNumber1;
 		var finalTotal = total * (1 - discount);
 		console.log("Your lucky number was " + luckyNumber + ".");
-		console.log("You get a 10% discount!");
-		console.log("Your new total is $" + finalTotal + "!");
+		console.log("You get a " + (discountForLuckyNumber1 * 100) + "% discount!");
+		console.log("Your new total is $" + finalTotal.toFixed(2) + "!");
+		console.log("That's a savings of $" + (total - finalTotal).toFixed(2) + "!");
 		break;
 	case luckyNumber = 2:
-		var discount = .25;
+		var discount = discountForLuckyNumber2;
 		var finalTotal = total * (1 - discount);
 		console.log("Your lucky number was " + luckyNumber + ".");
-		console.log("You get a 25% discount!");
-		console.log("Your new total is $" + finalTotal + "!");
+		console.log("You get a " + (discountForLuckyNumber2 * 100) + "% discount!");
+		console.log("Your new total is $" + finalTotal.toFixed(2) + "!");
+		console.log("That's a savings of $" + (total - finalTotal).toFixed(2) + "!");
 		break;
 	case luckyNumber = 3:
-		var discount = .35;
+		var discount = discountForLuckyNumber3;
 		var finalTotal = total * (1 - discount);
 		console.log("Your lucky number was " + luckyNumber + ".");
-		console.log("You get a 35% discount!");
-		console.log("Your new total is $" + finalTotal + "!");
+		console.log("You get a " + (discountForLuckyNumber3 * 100) + "% discount!");
+		console.log("Your new total is $" + finalTotal.toFixed(2) + "!");
+		console.log("That's a savings of $" + (total - finalTotal).toFixed(2) + "!");
 		break;
 	case luckyNumber = 4:
-		var discount = .50;
+		var discount = discountForLuckyNumber4;
 		var finalTotal = total * (1 - discount);
 		console.log("Your lucky number was " + luckyNumber + ".");
-		console.log("You get a 50% discount!!");
-		console.log("Your new total is $" + finalTotal + "!!");
+		console.log("You get a " + (discountForLuckyNumber4 * 100) + "% discount!");
+		console.log("Your new total is $" + finalTotal.toFixed(2) + "!");
+		console.log("That's a savings of $" + (total - finalTotal).toFixed(2) + "!");
 		break;
 	case luckyNumber = 5:
-		var discount = 1;
+		var discount = discountForLuckyNumber5;
 		var finalTotal = total * (1 - discount);
-		console.log("Your lucky number was " + luckyNumber + "!");
-		console.log("You get everything free!!");
-		console.log("Your new total is $" + finalTotal + "!!!");
+		console.log("Your lucky number was " + luckyNumber + "!!!");
+		console.log("You get everything free!!!");
+		console.log("Your new total is $" + finalTotal.toFixed(2) + "!!!");
+		console.log("That's a savings of $" + (total - finalTotal).toFixed(2) + "!!!");
 		break;
 }
+
+
+
 
 
 
