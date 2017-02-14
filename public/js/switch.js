@@ -3,7 +3,7 @@
 var total = 60;
 
 var discountForLuckyNumber0 = 0;
-var discountForLuckyNumber1 = .70;
+var discountForLuckyNumber1 = .10;
 var discountForLuckyNumber2 = .25;
 var discountForLuckyNumber3 = .35;
 var discountForLuckyNumber4 = .50;
