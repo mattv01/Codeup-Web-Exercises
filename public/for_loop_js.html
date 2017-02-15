@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>For Loop Practice</title>
+</head>
+<body>
+	<h2>For Loop Practice</h2>
+
+
+
+<script type="text/javascript">
+	"use strict";
+
+	//////// NUMBER PYRAMID ////////
+
+	var numberToString;
+	for (var i = 1; i < 10; i++) {
+		var numberToString = i + "";
+		console.log(numberToString.repeat(i));
+		if (i == 9) {
+			console.log("0".repeat(10));
+		}
+	}
+
+
+	//////// MULTIPLICATION TABLE ////////
+
+	for (var i = 1; i <= 10; i++) {
+		var random = Math.floor((Math.random()*10)+1)
+		for (var i = 1; i <= 10; i++) {
+			console.log(random + " x " + i + " = " + (random * i)); 
+		}
+	}
+
+
+	//////// ODD/EVEN ////////
+
+	for (var i = 1; i <= 10; i++) {
+		var random = Math.floor((Math.random()*180)+20)
+		if (random%2 == 0) {
+			console.log(random + " is even");
+		} else {
+			console.log(random + " is odd");
+		}
+	}
+
+
+	//////// DECREMENT BY 5 ////////
+
+	for (var i = 104; i >= 5; i--) {
+		i = i - 4;
+		console.log(i); 
+	}
+
+</script>	
+</body>
+</html>
