@@ -17,7 +17,7 @@
     // Bonus: Create a second string that would display your planets in an undordered list.
     //        You will need an opening AND closing <ul> tags around the entire string, and <li> tags around each planet.
     //        console.log() your results.
-    planetsString = planetsArray.join("</li> " + "<li>");
-    console.log("<ul><li>"+planetsString+"</li></ul>");
+    planetsString = planetsArray.join("</li> <li>");
+    console.log("<ul> <li>" + planetsString + "</li> </ul>");
 
 })();
