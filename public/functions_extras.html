@@ -8,7 +8,8 @@
 
 <script type="text/javascript">
 	"use strict";
-	
+
+	console.log("'Console logging an input'");
 	function log(input) {
 		console.log(input);
 	}
@@ -16,6 +17,7 @@
 	console.log(result);
 
 
+	console.log("'Returning an input'");
 	function identity(input) {
 		return input;
 	}
@@ -23,6 +25,7 @@
 	console.log(result);
 
 
+	console.log("'Picking a random number between the two inputs'");
 	function getRandomIntBetween(min, max) {
 	  return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
@@ -30,6 +33,7 @@
 	console.log(result);
 
 
+	console.log("'Checking to see if the input is a number or not'");
 	function isNumeric(input) {
 		if (Number.isInteger(input)) {
 			return true;
@@ -41,6 +45,7 @@
 	console.log(result);
 
 
+	console.log("'Addition Function'");
 	function add(a, b) {
 		return a + b;
 	}
@@ -48,6 +53,7 @@
 	console.log(result);
 
 
+	console.log("'Subtraction Function'");
 	function subtract(a, b) {
 		return a - b;
 	}
@@ -55,6 +61,7 @@
 	console.log(result);
 
 
+	console.log("'Multiplication Function'");
 	function multiply(a, b) {
 		return a * b;
 	}
@@ -62,6 +69,7 @@
 	console.log(result);
 	
 
+	console.log("'Division Function'");
 	function divide(a, b) {
 		return a / b;
 	}
@@ -69,6 +77,7 @@
 	console.log(result);
 
 
+	console.log("'Square Function'");
 	function square(a) {
 		return multiply(a, a);
 	}
@@ -76,6 +85,7 @@
 	console.log(result);
 
 
+	console.log("'Sum of Squares Function'");
 	function sumOfSquares(a, b) {
 		return add(square(a),square(b));
 	}
