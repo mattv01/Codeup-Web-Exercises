@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Functions Extras</title>
+</head>
+<body>
+<h2>Functions Extras</h2>
+
+<script type="text/javascript">
+	"use strict";
+	
+	function log(input) {
+		console.log(input);
+	}
+	var result = log("hi");
+	console.log(result);
+
+
+	function identity(input) {
+		return input;
+	}
+	var result = identity("matt");
+	console.log(result);
+
+
+	function getRandomIntBetween(min, max) {
+	  return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+	var result = getRandomIntBetween(10, 500);
+	console.log(result);
+
+
+	function isNumeric(input) {
+		if (Number.isInteger(input)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	var result = isNumeric(5);
+	console.log(result);
+
+
+	function add(a, b) {
+		return a + b;
+	}
+	var result = add(56, 32);
+	console.log(result);
+
+
+	function subtract(a, b) {
+		return a - b;
+	}
+	var result = subtract(135, 23);
+	console.log(result);
+
+
+	function multiply(a, b) {
+		return a * b;
+	}
+	var result = multiply(1500, 28);
+	console.log(result);
+	
+
+	function divide(a, b) {
+		return a / b;
+	}
+	var result = divide(300, 32);
+	console.log(result);
+
+
+	function square(a) {
+		return multiply(a, a);
+	}
+	var result = square(10);
+	console.log(result);
+
+
+	function sumOfSquares(a, b) {
+		return add(square(a),square(b));
+	}
+	var result = sumOfSquares(9, 15);
+	console.log(result);
+</script>
+</body>
+</html>
