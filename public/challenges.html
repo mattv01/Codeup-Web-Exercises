@@ -12,22 +12,22 @@
 	// Input: "aBc12#"
 	// Output: "AbC12#" 
 
-    function toggleCase(string) {
-        var stringArray = string.split(''); 
+    function toggleCase(input) {
+        var inputArray = input.split(''); 
 
-        stringArray = stringArray.map(function(current, index, stringArray) {
+        inputArray = inputArray.map(function(current, index, inputArray) {
             if (current.toLowerCase() === current) {
                 return current.toUpperCase(); 
             } else {
                 return current.toLowerCase(); 
             }
         });
-        return stringArray.join(''); 
+        return inputArray.join(''); 
     }
 	result = toggleCase("aBc12#");
 	console.log(result);
   	
-  	
+
 
 	// Write a program that takes a given string with a number at the end. The program will check the length of the string and verify the 	string length in characters is equal to the number appended. If so, output "yes", else output "no". 
 	// 	Input: "bob4"
