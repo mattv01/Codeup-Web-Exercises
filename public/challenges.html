@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Challenges</title>
+</head>
+<body>
+<h2>Challenges</h2>
+
+<script type="text/javascript">
+
+	// Write a program to toggle the case of all characters in a string. Special characters don't change.
+	// Input: "aBc12#"
+	// Output: "AbC12#" 
+
+    function toggleCase(string) {
+        var stringArray = string.split(''); 
+
+        stringArray = stringArray.map(function(current, index, stringArray) {
+            if (current.toLowerCase() === current) {
+                return current.toUpperCase(); 
+            } else {
+                return current.toLowerCase(); 
+            }
+        });
+        return stringArray.join(''); 
+    }
+	result = toggleCase("aBc12#");
+	console.log(result);
+  	
+  	
+
+	// Write a program that takes a given string with a number at the end. The program will check the length of the string and verify the 	string length in characters is equal to the number appended. If so, output "yes", else output "no". 
+	// 	Input: "bob4"
+	// 	Output: "yes" 
+	
+	// 	Input: "bananas55"
+	// 	Output: "no" 
+
+	function check(input) {
+		if (input.length == (input.match(/\d/g))) {
+			return "Yes";
+		} else {
+			return "No";
+		}
+	}
+	result = check("bob4");
+	console.log(result);
+	
+</script>
+</body>
+</html>
+
+
+
