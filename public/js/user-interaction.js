@@ -1,3 +1,4 @@
+(function() {
 "use strict";
 
 var name; 
@@ -15,3 +16,4 @@ if (likesPizza == true) {
 } else {
 	alert("What?! You're missing out!");
 }
+})();

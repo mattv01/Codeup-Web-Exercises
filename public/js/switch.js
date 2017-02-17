@@ -1,3 +1,4 @@
+(function() {
 "use strict";
 
 var total = 60;
@@ -106,3 +107,4 @@ switch (month) {
 		break;
 }
 
+})();

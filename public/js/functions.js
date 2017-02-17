@@ -1,3 +1,4 @@
+(function() {
 "use strict";
 
 var myNameIs = "Matt"; // TODO: Fill in your name here.
@@ -53,3 +54,4 @@ isOdd(random);
 // }
 
 // isOdd(random);
+})();

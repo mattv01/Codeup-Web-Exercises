@@ -1,3 +1,4 @@
+(function() {
 "use strict";
 
 var coneInventory = Math.floor(Math.random() * 50) + 50;
@@ -15,3 +16,4 @@ do {
 } while (coneInventory > 0);
 
 console.log("Yay! I sold them all!");
+})();

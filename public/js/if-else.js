@@ -1,3 +1,4 @@
+(function() {
 "use strict";
 
 var grade1 = 70;
@@ -67,3 +68,4 @@ var flipACoin = Math.floor(Math.random()* 2);
 var message = (flipACoin) ? "Buy a car" : "Buy a house";
 console.log(message);
 
+})();
