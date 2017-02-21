@@ -22,34 +22,16 @@
 
 	///////////////////// TYPES IN OPERATORS /////////////////////////
 
-	function typeOperator1(){
-			var inputOperator = document.getElementById("input2");
-			inputOperator.value = "+";
+	function typeInOperator() {
+		var opDisplay = document.getElementById("input2");
+		opDisplay.value = this.innerText;	
 	}
-	var inputOp = document.getElementById("op1");
-	inputOp.addEventListener("click", typeOperator1);
-	
-	function typeOperator2(){
-			var inputOperator = document.getElementById("input2");
-			inputOperator.value = "-";
+	var operators = document.getElementsByClassName("operator");
+
+	for (var i = 0; i < operators.length; i++) {
+		operators[i].addEventListener("click", typeInOperator);
 	}
-	var inputOp = document.getElementById("op2");
-	inputOp.addEventListener("click", typeOperator2);
-	
-	function typeOperator3(){
-			var inputOperator = document.getElementById("input2");
-			inputOperator.value = "*";
-	}
-	var inputOp = document.getElementById("op3");
-	inputOp.addEventListener("click", typeOperator3);
-	
-	function typeOperator4(){
-			var inputOperator = document.getElementById("input2");
-			inputOperator.value = "/";
-	}
-	var inputOp = document.getElementById("op4");
-	inputOp.addEventListener("click", typeOperator4);
-	
+
 
 
 	///////////////////// CALCULATES MATH /////////////////////////
@@ -57,13 +39,8 @@
 	function calculateMath(){
 		var input2 = document.getElementById("input2");
 		switch (input2.value) {
-			case input2.value = "/":
-				var math = (input1.value)/(input3.value);
-				input1.value = math;
-				input3.value = "";
-			break;
-			case input2.value = "*":
-				var math = (input1.value)*(input3.value);
+			case input2.value = "+":
+				var math = (parseInt(input1.value))+(parseInt(input3.value));
 				input1.value = math;
 				input3.value = "";
 			break;
@@ -72,8 +49,13 @@
 				input1.value = math;
 				input3.value = "";
 			break;
-			case input2.value = "+":
-				var math = (parseInt(input1.value))+(parseInt(input3.value));
+			case input2.value = "*":
+				var math = (input1.value)*(input3.value);
+				input1.value = math;
+				input3.value = "";
+			break;
+			case input2.value = "/":
+				var math = (input1.value)/(input3.value);
 				input1.value = math;
 				input3.value = "";
 			break;
@@ -90,9 +72,9 @@
 		var inputs = document.getElementById("input1");
 		var inputs2 = document.getElementById("input2");
 		var inputs3 = document.getElementById("input3");
-		inputs.value = " ";
-		inputs2.value = " ";
-		inputs3.value = " ";
+		inputs.value = "";
+		inputs2.value = "";
+		inputs3.value = "";
 	}
 	var clearCalc = document.getElementById("clearCalc");
 	clearCalc.addEventListener("click", clearCalculator);
