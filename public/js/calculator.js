@@ -1,6 +1,8 @@
 (function() {
 	"use strict";
 
+	///////////////////////////// TYPES IN NUMBERS /////////////////////////////////
+
 	function typeInNumber1(){
 			if (input2.value !== "+" && input2.value !== "-" && input2.value !== "*" && input2.value !== "/") {
 				var inputNumber = document.getElementById("input1");
@@ -133,6 +135,8 @@
 
 
 
+	///////////////////// TYPES IN OPERATORS /////////////////////////
+
 	function typeOperator1(){
 			var inputOperator = document.getElementById("input2");
 			inputOperator.value = "+";
@@ -161,7 +165,9 @@
 	var inputOp = document.getElementById("op4");
 	inputOp.addEventListener("click", typeOperator4);
 	
-	
+
+
+	///////////////////// CALCULATES MATH /////////////////////////
 	
 	function calculateMath(){
 		var input2 = document.getElementById("input2");
@@ -191,7 +197,9 @@
 	var equals = document.getElementById("equals");
 	equals.addEventListener("click", calculateMath);
 	
+
 	
+	///////////////////// CLEARS CALCULATOR /////////////////////////
 
 	function clearCalculator(){
 		var inputs = document.getElementById("input1");
