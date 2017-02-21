@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Extra Event Listener Exercise</title>
+</head>
+<body id="background">
+
+	<h1 id="title">Hello World!</h1>
+	<button id="goodbye">Goodbye World!</button>
+	<button id="reset">Hello World!</button>
+	<button id="rickA">Rick Astley</button>
+	<button id="nomo">No More Rick</button>
+
+<script type="text/javascript">
+	(function() {
+		"use strict";
+	
+		function changeText() {
+			var titleChange = document.getElementById("title");
+			titleChange.innerText = "Goodbye World!";
+		}
+		var goodbye = document.getElementById("goodbye");
+		goodbye.addEventListener("click", changeText);
+	
+	
+		function resetText() {
+			var titleChange = document.getElementById("title");
+			titleChange.innerText = "Hello World!";
+		}
+		var reset = document.getElementById("reset");
+		reset.addEventListener("click", resetText);
+	
+	
+		function changeBackground() {
+			var backgroundChange = document.getElementById("background");
+			backgroundChange.style.backgroundImage = "url('img/rick-astley.png')";
+		}
+		var rickA = document.getElementById("rickA");
+		rickA.addEventListener("click", changeBackground);
+	
+	
+		function changeBackgroundBack() {
+			var backgroundChange = document.getElementById("background");
+			backgroundChange.style.backgroundImage = "";
+		}
+		var nomo = document.getElementById("nomo");
+		nomo.addEventListener("click", changeBackgroundBack);
+	})();
+</script>
+</body>
+</html>
