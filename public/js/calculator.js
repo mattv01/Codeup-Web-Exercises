@@ -6,9 +6,9 @@
 	function typeInNumber() {
 		var leftDisplay = document.getElementById("input1");
 		var rightDisplay = document.getElementById("input3");
-		if (input2.value !== "+" && input2.value !== "-" && input2.value !== "*" && input2.value !== "/"){
+		if (input2.value == "" && leftDisplay != ""){
 			leftDisplay.value += this.innerText;	
-		} else if (input2.value == "+" || input2.value == "-" || input2.value == "*" || input2.value == "/") {
+		} else {
 			rightDisplay.value += this.innerText;
 		}
 	}
