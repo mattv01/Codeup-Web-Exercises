@@ -43,6 +43,9 @@ input {
 	font-size: 50px;
 }
 
+button#sqrt {
+	font-size: 55px;
+}
 
 @media (min-width:768px) {      	
 
