@@ -4,14 +4,14 @@
 	<title>JQuery Exercise</title>
 </head>
 <body>
-	<h1 class="codeup" id="header1">JQuery Exercise</h1>
+	<h1 class="header" id="header1">JQuery Exercise</h1>
 		<p id="p1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus tenetur culpa, fuga, doloribus voluptas vel pariatur assumenda 	aut animi voluptatibus ad quo similique atque ipsam, nostrum magni possimus dolorum provident!</p>
 		<p id="p2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus tenetur culpa, fuga, doloribus voluptas vel pariatur assumenda 	aut animi voluptatibus ad quo similique atque ipsam, nostrum magni possimus dolorum provident!</p>
 	<div>
-		<h2 class="codeup" id="header2">List</h2>
+		<h2 class="header" id="header2">List</h2>
 		<ul id="list">
 			<li class="listItem" id="item1">List item</li>
-			<li class="codeup"   id="item2">List item</li>
+			<li class="listItem" id="item2">List item</li>
 			<li class="listItem" id="item3">List item</li>
 		</ul>
 	</div>
@@ -23,8 +23,11 @@
 <script>
  	$(document).ready(function(){
  	
- 	$(".codeup").css("border", "1px solid red");
+ 	$("li").css("font-size", "20px");
+ 	
+ 	$("h1, p, li").css("background-color", "yellow");
 
+ 	alert($("h1").html());
 
 
   	});
