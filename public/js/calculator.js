@@ -54,7 +54,7 @@
 			break;
 			case input2.value = "*":
 				var math = (input1.value)*(input3.value);
-				input1.value = math.toFixed(4);
+				input1.value = parseFloat(math.toFixed(4));
 				input3.value = "";
 			break;
 			case input2.value = "/":
@@ -65,7 +65,6 @@
 			case input2.value = "^":
 				if (input3.value == "") {
 					var math = input1.value *= input1.value;
-					console.log(input1.value);
 					input1.value = parseFloat(math.toFixed(4));
 				} else {
 					var math = Math.pow((input1.value),(input3.value));
@@ -82,6 +81,8 @@
 	equals.addEventListener("click", calculateMath);
 
 
+
+	///////////// MAKES PERCENT && MAKES SQUARE ROOT ///////////////
 
 	function makePercent() {
 		input2.value = "%";
