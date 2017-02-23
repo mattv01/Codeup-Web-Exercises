@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<style type="text/css">
+				#map-canvas {
+						width: 770px;
+						height: 481px;
+				}
+		</style>
+</head>
+<body>
+		<!-- div to hold map -->
+		<div id="map-canvas"></div>
+
+		<!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoIT3ydevK5sQO9zmGJLbsrnoKSSiK9Ng"></script>
+
+		<!-- Script to show address on map -->
+		<script type="text/javascript">
+		(function() {
+				"use strict";
+
+				// // Set our address to geocode
+				// var address = "8317 Babe Ruth, San Antonio, TX, 78240";
+
+				// // Init geocoder object
+				// var geocoder = new google.maps.Geocoder();
+
+
+				// var addressLatLng;
+				// // Geocode our address
+				// geocoder.geocode({ "address": address }, function(results, status) {
+
+				//    // Check for a successful result
+				//    if (status == google.maps.GeocoderStatus.OK) {
+
+				//    		var lat = results[0].geometry.location.lat();
+				//    		var lng = results[0].geometry.location.lng();
+
+				//    		addressLatLng = {"Lat":lat, "Lng":lng}
+
+
+				//        // Recenter the map over the address
+				//        map.setCenter(results[0].geometry.location);
+				//    } else {
+
+				//        // Show an error message with the status if our request fails
+				//        alert("Geocoding was not successful - STATUS: " + status);
+				//    }
+				// });
+
+
+
+				// Set our map options
+				var mapOptions = {
+						// Set the zoom level
+						zoom: 12,
+
+						// mapTypeId: "satellite",
+						// tilt: 45,
+						// This sets the center of the map at our location
+						center: {
+								lat: 29.466464,
+								lng: -98.520568
+						}
+				};
+ 
+				// Render the map
+				var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+
+
+
+
+//////////////////////////////////////// GUILLERMO'S //////////////////////////////////////////////////////////////
+
+				var guillermos = { lat: 29.434136, lng: -98.487552};
+
+				// var image = 'http://www.guillermosdowntown.com/wp-content/uploads/2015/03/guillermos-logo1.png'
+				// var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+				var image = "http://orig07.deviantart.net/b270/f/2011/003/5/2/nyan_nyan_nyanko_burger_by_unluckyprincess-d36dnf6.gif"
+
+				var marker = new google.maps.Marker({
+						position: guillermos,
+						animation: google.maps.Animation.DROP,
+						icon: image,
+						draggable:true,
+						title:"Drag me!",
+						map: map
+				});
+
+				marker.addListener('click', function() {
+					map.setZoom(20);
+				});
+
+				marker.addListener('click', function() {        
+					var guillermoString = '<div id="content">'+
+							'<div id="siteNotice">'+
+							'</div>'+
+							'<h1 id="firstHeading" class="firstHeading"><a href="http://www.guillermosdowntown.com/" target="_blank">Guillermo\'s</a></h1>'+
+							'<div id="bodyContent">'+
+							'<p>I love <b>Guillermo\'s</b> because of the outdoor seating. Their bacon cheeseburger with jalapenos is amazing!</p>'+
+							'</div>'+
+							'</div>';
+	
+					var infowindow = new google.maps.InfoWindow({
+							content: guillermoString
+					});
+				
+					infowindow.open(map, marker);
+
+				});
+
+
+
+////////////////////////////////// SMOKE THE RESTAURANT ////////////////////////////////////////////////////////
+
+
+				// var image = "http://smoketherestaurant.com/wp-content/uploads/2016/08/smoke-logo.png";
+				var image = "http://salemwiki.info/images/2/2e/Company_Bacon_icon.png";
+
+				var smoke = { lat: 29.421468, lng: -98.478512};
+
+				var smokeMarker = new google.maps.Marker({
+						position: smoke,
+						animation: google.maps.Animation.DROP,
+						icon: image,
+						draggable:true,
+						title:"Drag me!",
+						map: map
+				});
+
+
+				smokeMarker.addListener('click', function() {
+					map.setZoom(20);
+				});
+
+				smokeMarker.addListener('click', function() {
+						
+					var smokeString = '<div id="content">'+
+							'<div id="siteNotice">'+
+							'</div>'+
+							'<h1 id="firstHeading" class="firstHeading"><a href="http://smoketherestaurant.com/" target = "_blank">Smoke</a></h1>'+
+							'<div id="bodyContent">'+
+							'<p>Smoke has <b>THE BEST BBQ!</b><br> Smoke is a bit pricey, but it is completely worth it. They even cure their own bacon!</p>'+
+							'</div>'+
+							'</div>';
+	
+					// Create a new infoWindow object with content
+					var infowindow = new google.maps.InfoWindow({
+							content: smokeString
+					});
+					
+					// Open the window using our map and marker
+					infowindow.open(map, smokeMarker);
+
+				});
+
+
+
+//////////////////////////////////////// AMIGO CHICAGO'S PIZZA //////////////////////////////////////////////////////////////
+
+
+				var image = "https://31.media.tumblr.com/23dd2f720384295e29bc05e67a820734/tumblr_inline_ndsespsDxP1rujz3w.gif"
+
+				var pizza = { lat: 29.515207, lng: -98.570178};
+ 
+				var pizzaMarker = new google.maps.Marker({
+						position: pizza,
+						animation: google.maps.Animation.DROP,
+						icon: image,
+						draggable:true,
+						title:"Drag me!",
+						map: map
+				});
+
+
+				pizzaMarker.addListener('click', function() {
+					map.setZoom(20);
+				});
+
+				pizzaMarker.addListener('click', function() {
+					
+					var pizzaString = '<div id="content">'+
+							'<div id="siteNotice">'+
+							'</div>'+
+							'<h1 id="firstHeading" class="firstHeading"><a href="http://www.amigochicagospizza.com/" target = "_blank">Amigo Chicago\'s Pizza</a> </h1>'+
+							'<div id="bodyContent">'+
+							'<p>Amigo Chicago\'s Pizzais one of my favorite places to get deep-dish pizza.</p>'+
+							'</div>'+
+							'</div>';
+	
+					// Create a new infoWindow object with content
+					var infowindow = new google.maps.InfoWindow({
+						content: pizzaString
+					});
+					
+					// Open the window using our map and marker
+					infowindow.open(map, pizzaMarker);
+
+				});
+
+
+		})();
+		</script>
+</body>
