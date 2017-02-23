@@ -50,15 +50,11 @@
 				// });
 
 
-
-				// Set our map options
 				var mapOptions = {
-						// Set the zoom level
 						zoom: 12,
 
 						// mapTypeId: "satellite",
 						// tilt: 45,
-						// This sets the center of the map at our location
 						center: {
 								lat: 29.466464,
 								lng: -98.520568
@@ -67,8 +63,6 @@
  
 				// Render the map
 				var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-
 
 
 
@@ -89,10 +83,6 @@
 						map: map
 				});
 
-				marker.addListener('click', function() {
-					map.setZoom(20);
-				});
-
 				marker.addListener('click', function() {        
 					var guillermoString = '<div id="content">'+
 							'<div id="siteNotice">'+
@@ -108,6 +98,8 @@
 					});
 				
 					infowindow.open(map, marker);
+
+					map.setZoom(20);
 
 				});
 
@@ -130,13 +122,7 @@
 						map: map
 				});
 
-
-				smokeMarker.addListener('click', function() {
-					map.setZoom(20);
-				});
-
-				smokeMarker.addListener('click', function() {
-						
+				smokeMarker.addListener('click', function() {						
 					var smokeString = '<div id="content">'+
 							'<div id="siteNotice">'+
 							'</div>'+
@@ -146,20 +132,19 @@
 							'</div>'+
 							'</div>';
 	
-					// Create a new infoWindow object with content
 					var infowindow = new google.maps.InfoWindow({
 							content: smokeString
 					});
 					
-					// Open the window using our map and marker
 					infowindow.open(map, smokeMarker);
+
+					map.setZoom(20);
 
 				});
 
 
 
 //////////////////////////////////////// AMIGO CHICAGO'S PIZZA //////////////////////////////////////////////////////////////
-
 
 				var image = "https://31.media.tumblr.com/23dd2f720384295e29bc05e67a820734/tumblr_inline_ndsespsDxP1rujz3w.gif"
 
@@ -174,13 +159,7 @@
 						map: map
 				});
 
-
 				pizzaMarker.addListener('click', function() {
-					map.setZoom(20);
-				});
-
-				pizzaMarker.addListener('click', function() {
-					
 					var pizzaString = '<div id="content">'+
 							'<div id="siteNotice">'+
 							'</div>'+
@@ -190,17 +169,18 @@
 							'</div>'+
 							'</div>';
 	
-					// Create a new infoWindow object with content
 					var infowindow = new google.maps.InfoWindow({
 						content: pizzaString
 					});
 					
-					// Open the window using our map and marker
 					infowindow.open(map, pizzaMarker);
+
+					map.setZoom(20);
 
 				});
 
 
 		})();
+
 		</script>
 </body>
