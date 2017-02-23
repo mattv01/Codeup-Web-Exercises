@@ -79,11 +79,11 @@
 						animation: google.maps.Animation.DROP,
 						icon: image,
 						draggable:true,
-						title:"Drag me!",
+						title:"'Click' to Zoom In(+) or Out(-)",
 						map: map
 				});
 
-				marker.addListener('click', function() {        
+				marker.addListener('mouseover', function() {        
 					var guillermoString = '<div id="content">'+
 							'<div id="siteNotice">'+
 							'</div>'+
@@ -99,9 +99,19 @@
 				
 					infowindow.open(map, marker);
 
-					map.setZoom(20);
-
+					marker.addListener('mouseout', function() {
+						infowindow.close(map, marker);
+					});
 				});
+
+				marker.addListener('click', function() {
+					map.setZoom(20);
+					map.panTo(marker.position);
+					marker.addListener('click', function() {
+						map.setZoom(12);
+						map.panTo(mapOptions.center);
+					});
+				});	
 
 
 
@@ -118,11 +128,11 @@
 						animation: google.maps.Animation.DROP,
 						icon: image,
 						draggable:true,
-						title:"Drag me!",
+						title:"'Click' to Zoom In(+) or Out(-)",
 						map: map
 				});
 
-				smokeMarker.addListener('click', function() {						
+				smokeMarker.addListener('mouseover', function() {						
 					var smokeString = '<div id="content">'+
 							'<div id="siteNotice">'+
 							'</div>'+
@@ -138,9 +148,19 @@
 					
 					infowindow.open(map, smokeMarker);
 
-					map.setZoom(20);
-
+					smokeMarker.addListener('mouseout', function() {
+						infowindow.close(map, smokeMarker);
+					});
 				});
+
+				smokeMarker.addListener('click', function() {
+					map.setZoom(20);
+					map.panTo(smokeMarker.position);
+					smokeMarker.addListener('click', function() {
+						map.setZoom(12);
+						map.panTo(mapOptions.center);
+					});
+				});	
 
 
 
@@ -155,11 +175,11 @@
 						animation: google.maps.Animation.DROP,
 						icon: image,
 						draggable:true,
-						title:"Drag me!",
+						title:"'Click' to Zoom In(+) or Out(-)",
 						map: map
 				});
 
-				pizzaMarker.addListener('click', function() {
+				pizzaMarker.addListener('mouseover', function() {
 					var pizzaString = '<div id="content">'+
 							'<div id="siteNotice">'+
 							'</div>'+
@@ -175,12 +195,21 @@
 					
 					infowindow.open(map, pizzaMarker);
 
-					map.setZoom(20);
-
+					pizzaMarker.addListener('mouseout', function() {
+						infowindow.close(map, pizzaMarker);
+					});
 				});
+				
+				pizzaMarker.addListener('click', function() {
+					map.setZoom(20);
+					map.panTo(pizzaMarker.position);
+					pizzaMarker.addListener('click', function() {
+						map.setZoom(12);
+						map.panTo(mapOptions.center);
+					});
+				});			
 
-
-		})();
+		})(); //ends IIFE
 
 		</script>
 </body>
