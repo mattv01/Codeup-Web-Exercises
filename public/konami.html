@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <style type="text/css"> 
+    	h1 {
+    		font-size: 200px;
+    		text-align: center;
+    		margin: 0px;
+    		padding-top: 70px;
+    	}
+
+    	img {
+    		width: 140px;
+    		height: 140px;
+    	}
+    </style>
+</head>
+
+<body>
+    <main>
+    	<h1>Do You Know The Konami C<img src="http://rsmg.pbsrc.com/albums/v513/Cava-Chan/DOOM/cacodemon_11.gif~c200">de??</h1>
+		<h2></h2>
+    </main>
+
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script>
+    "use strict";
+
+ 	$(document).ready(function(){
+
+		//////////////////////////////////////////////// KONAMI CODE /////////////////////////////////////////////////
+
+		var konami = [];
+		var konamiCode = "38,38,40,40,37,39,37,39,66,65,13";
+	
+		$(document).keydown(function(key) {
+	
+			konami.push(key.keyCode);
+	
+		  	if (konami.toString().indexOf(konamiCode) >= 0) {
+
+				/////////////////////////// BODY /////////////////////////////
+	
+		  		$("body").css("background-image", "url(https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg)");
+				
+	
+				/////////////////////////// MAIN /////////////////////////////
+	
+		  		$("main").css({
+		  			"background-image" : "url(http://media.moddb.com/cache/images/downloads/1/64/63046/thumb_620x2000/EDGE.gif)",
+		  			"padding" : "90px", 
+		  			"height" : "750px" 
+				});
+	
+	
+				/////////////////////////// H1 /////////////////////////////
+	
+		  		$("h1").html("GAME UNLOCKED!!");
+		  		$("h1").css({
+		  			"background-image" : "url(http://orig11.deviantart.net/4e07/f/2010/328/2/1/hell_baron_by_ribozurai-d33i3og.gif)", 
+		  			"font-size" : "70px", 
+		  			"padding-top" : "250px", 
+		  			"padding-bottom" : "200px", 
+    				"text-shadow": "0 0 10px #FF0000",
+		  			"font-family" : "'Press Start 2P', cursive", 
+		  			"color" : "#fdf733", 
+		  			"text-align" : "center"
+		  		});
+				$("h1").each(function() {
+				    var unlock = $(this);
+				    setInterval(function() {
+				        if (unlock.css("visibility") == "hidden") {
+				            unlock.css("visibility", "visible");
+				        } else {
+				            unlock.css("visibility", "hidden");
+				        }    
+				    }, 250);
+				});
+	
+
+				/////////////////////////// H2 /////////////////////////////
+	
+		  		$("h2").html("(PRESS SPACEBAR TO PLAY)");
+		  		$("h2").css({
+		  			"color" : "white",
+		  			"font-family" : "'Press Start 2P', cursive",
+		  			"text-shadow" : "-3px 0 black, 0 3px black, 3px 0 black, 0 -3px black",
+		  			"text-align" : "center",
+		  			"padding-top" : "100px"
+		  		});
+		  		$("h2").each(function() {
+				    var pressToPlay = $(this);
+				    setInterval(function() {
+				        if (pressToPlay.css("visibility") == "hidden") {
+				            pressToPlay.css("visibility", "visible");
+				        } else {
+				            pressToPlay.css("visibility", "hidden");
+				        }    
+				    }, 900);
+				});
+
+
+				/////////////////////////// AUDIO /////////////////////////////
+	
+		  		var doomMusic = document.createElement('audio');
+    			doomMusic.setAttribute('src', 'http://www.doom2.net/doomdepot/music/pc%20doom/E1M1%20-%20At%20Doom\'s%20Gate.mp2');	
+    			doomMusic.volume = 0.5;
+    			doomMusic.play();
+
+
+				/////////////// RELOAD PAGE BY SPACEBAR ////////////////
+				
+				$(document).keydown(function(key) {
+					if(key.keyCode == 32){
+						location.reload();
+					}
+				});   
+
+			} //ends if statement
+		}); //ends document keydown
+	}); //ends document ready
+</script>
+</body>
+</html>
