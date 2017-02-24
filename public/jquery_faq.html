@@ -18,30 +18,54 @@
 <body>
     <h1>National Parks FAQ</h1>
         
-    <a href="#" id="toggleAnswer">Click to Toggle Answers</a>
+    <a href="#" id="toggleAnswers">Click to Toggle Answers</a>
     <dl>
-        <dt>Q1</dt>
-            <dd>A1</dd>
-        <dt>Q2</dt>
-            <dd>A2</dd>
-        <dt>Q3</dt>
-            <dd>A3</dd>
-        <dt>Q4</dt>
-            <dd>A4</dd>
-        <dt>Q5</dt>
-            <dd>A5</dd>
-        <dt>Q6</dt>
-            <dd>A6</dd>
-        <dt>Q7</dt>
-            <dd>A7</dd>
-        <dt>Q8</dt>
-            <dd>A8</dd>
-        <dt>Q9</dt>
-            <dd>A9</dd>
-        <dt>Q10</dt>
-            <dd>A10</dd>
+        <dt>"Q1"</dt>
+            <dd>A1.</dd>
+        <dt>"Q2"</dt>
+            <dd>A2.</dd>
+        <dt>"Q3"</dt>
+            <dd>A3.</dd>
+        <dt>"Q4"</dt>
+            <dd>A4.</dd>
+        <dt>"Q5"</dt>
+            <dd>A5.</dd>
+        <dt>"Q6"</dt>
+            <dd>A6.</dd>
+        <dt>"Q7"</dt>
+            <dd>A7.</dd>
+        <dt>"Q8"</dt>
+            <dd>A8.</dd>
+        <dt>"Q9"</dt>
+            <dd>A9.</dd>
+        <dt>"Q10"</dt>
+            <dd>A10.</dd>
     </dl>
 
+    <h3>Park 1</h3>
+    <ul>
+        <li>Fact</li>
+        <li>Fact</li>
+        <li>Fact</li>
+        <li>Fact</li>
+    </ul>
+
+    <h3>Park 2</h3>
+    <ul>
+        <li>Fact</li>
+        <li>Fact</li>
+        <li>Fact</li>
+        <li>Fact</li>
+    </ul>
+
+    <h3>Park 3</h3>
+    <ul>
+        <li>Fact</li>
+        <li>Fact</li>
+        <li>Fact</li>
+        <li>Fact</li>
+    </ul>
+  
 
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
@@ -53,9 +77,21 @@
         
         $("dd").addClass("invisible");
 
-        $("#toggleAnswer").click(function() {
+        $("#toggleAnswers").click(function() {
             $("dd").toggleClass("invisible");
         });
+
+
+
+        $("ul").each(function(){
+            $(this).children().first().css("font-weight", "bold")
+        });
+
+        $("li").click(function(){  
+            $(this).parent().addClass("invisible");    
+        });
+
+
 
     });
 </script>
