@@ -78,7 +78,7 @@
         $("dd").addClass("invisible");
 
         $("#toggleAnswers").click(function() {
-            $("dd").toggleClass("invisible");
+            $("dd").slideToggle("invisible");
         });
 
 
@@ -88,9 +88,12 @@
         });
 
         $("li").click(function(){  
-            $(this).parent().addClass("invisible");    
+            $(this).parent().slideToggle("invisible");    
         });
 
+        $("h3").click(function(){  
+            $(this).next("ul").slideToggle("invisible");    
+        });
 
 
     });
