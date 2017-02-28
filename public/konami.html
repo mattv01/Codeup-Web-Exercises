@@ -12,15 +12,17 @@
     	}
 
     	img {
+    		display: none;
     		width: 140px;
     		height: 140px;
+    		position: relative;
     	}
     </style>
 </head>
 
 <body>
     <main>
-    	<h1>Do You Know The Konami C<img src="http://rsmg.pbsrc.com/albums/v513/Cava-Chan/DOOM/cacodemon_11.gif~c200">de??</h1>
+    	<h1>Do You Know The Konami C<img src="http://rsmg.pbsrc.com/albums/v513/Cava-Chan/DOOM/cacodemon_11.gif~c200"><span>o</span>de??</h1>
 		<h2></h2>
     </main>
 
@@ -32,6 +34,58 @@
     "use strict";
 
  	$(document).ready(function(){
+ 		
+		//////////////////////////////////////////////// CACODEMON ANIMATION /////////////////////////////////////////////////
+
+ 		$("img").fadeIn(3000);
+ 		$("span").hide();
+        
+        var timeInterval = 2000;
+        var movement = 400;
+
+		var time = (Math.ceil(Math.random()*timeInterval))+500;
+		var move = (Math.ceil(Math.random()*movement))+100;
+
+        $("img").hover(function(){
+        	$(this).animate({
+        		right: move + "px",
+        		bottom: move + "px"
+        	}, time).animate({
+        		right: -move + "px",
+        		top: -move + "px"
+        	}, time).animate({
+        		left: -move + "px",
+        		bottom: -move + "px"
+        	}, time).animate({
+        		left: move + "px",
+        		top: move + "px"
+        	}, time).animate({
+        		left: move + "px",
+        		top: move + "px"
+        	}, time).animate({
+        		right: -move + "px",
+        		top: -move + "px"
+        	}, time).animate({
+        		top: move + "px",
+        		right: move + "px"
+        	}, time).animate({
+        		top: -move + "px",
+        		left: -move + "px"
+        	}, time).animate({
+        		top: -move + "px",
+        		left: -move + "px"
+        	}, time).animate({
+        		bottom: move + "px",
+        		left: move + "px"
+        	}, time).animate({
+        		top: move + "px",
+        		right: move + "px"
+        	}, time).animate({
+        		bottom: -move + "px",
+        		right: -move + "px"
+        	}, time)
+        });
+
 
 		//////////////////////////////////////////////// KONAMI CODE /////////////////////////////////////////////////
 
@@ -44,12 +98,12 @@
 	
 		  	if (konami.toString().indexOf(konamiCode) >= 0) {
 
-				/////////////////////////// BODY /////////////////////////////
+				/////////////////////////// DOOM BACKGROUND /////////////////////////////
 	
 		  		$("body").css("background-image", "url(https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg)");
 				
 	
-				/////////////////////////// MAIN /////////////////////////////
+				/////////////////////////// SOLDIER HEAD /////////////////////////////
 	
 		  		$("main").css({
 		  			"background-image" : "url(http://media.moddb.com/cache/images/downloads/1/64/63046/thumb_620x2000/EDGE.gif)",
@@ -58,7 +112,7 @@
 				});
 	
 	
-				/////////////////////////// H1 /////////////////////////////
+				/////////////////////////// GAME UNLOCKED!! /////////////////////////////
 	
 		  		$("h1").html("GAME UNLOCKED!!");
 		  		$("h1").css({
@@ -72,18 +126,18 @@
 		  			"text-align" : "center"
 		  		});
 				$("h1").each(function() {
-				    var unlock = $(this);
+				    var unlockBlink = $(this);
 				    setInterval(function() {
-				        if (unlock.css("visibility") == "hidden") {
-				            unlock.css("visibility", "visible");
+				        if (unlockBlink.css("visibility") == "hidden") {
+				            unlockBlink.css("visibility", "visible");
 				        } else {
-				            unlock.css("visibility", "hidden");
+				            unlockBlink.css("visibility", "hidden");
 				        }    
 				    }, 250);
 				});
 	
 
-				/////////////////////////// H2 /////////////////////////////
+				/////////////////////////// (PRESS SPACEBAR TO PLAY) /////////////////////////////
 	
 		  		$("h2").html("(PRESS SPACEBAR TO PLAY)");
 		  		$("h2").css({
@@ -94,18 +148,18 @@
 		  			"padding-top" : "100px"
 		  		});
 		  		$("h2").each(function() {
-				    var pressToPlay = $(this);
+				    var pressToPlayBlink = $(this);
 				    setInterval(function() {
-				        if (pressToPlay.css("visibility") == "hidden") {
-				            pressToPlay.css("visibility", "visible");
+				        if (pressToPlayBlink.css("visibility") == "hidden") {
+				            pressToPlayBlink.css("visibility", "visible");
 				        } else {
-				            pressToPlay.css("visibility", "hidden");
+				            pressToPlayBlink.css("visibility", "hidden");
 				        }    
 				    }, 900);
 				});
 
 
-				/////////////////////////// AUDIO /////////////////////////////
+				/////////////////////////// DOOM MUSIC /////////////////////////////
 	
 		  		var doomMusic = document.createElement('audio');
     			doomMusic.setAttribute('src', 'http://www.doom2.net/doomdepot/music/pc%20doom/E1M1%20-%20At%20Doom\'s%20Gate.mp2');	
