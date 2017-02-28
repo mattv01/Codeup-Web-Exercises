@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store</title>
+</head>
+<body>
+    <h1>My Tool Store</h1>
+
+    <table id="products">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Categories</th>
+            </tr>
+        </thead>
+        <tbody id="insertProducts"></tbody>
+    </table>
+
+    <button id="refresh">Refresh</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+(function() {
+    "use strict";
+
+    function ToolData(){
+        var url = "/data/inventory.json"
+        var request = $.get(url);
+    
+        request.fail(function(){
+            alert("Oops! Something went wrong");
+        });
+    
+        request.done(function (tools) {
+            for(var i = 0; i < tools.length; i++) {
+                var insertProducts = $("#insertProducts")
+                var tool = "";
+                tool += "<tr>";
+                tool += "<td>" + tools[i].title + "</td>";
+                tool += "<td>" + tools[i].quantity + "</td>";
+                tool += "<td>$" + tools[i].price + "</td>";
+                tool += "<td>" + tools[i].categories + "</td>";
+                tool += "</tr>";
+                insertProducts.append(tool);
+            }
+        });
+    };
+    ToolData();
+
+            ///////// MY ORIGINAL SOLUTION ///////
+            // request.done(function (tools) {
+            //     for(var i = 0; i < tools.length; i++) {         
+            //     $("#insertProducts").append("<tr><td>" + tools[i].title + "</td><td>" + tools[i].quantity + "</td><td>$" + tools[i].price + "</td><td>" + tools[i].categories + "</td></tr>");
+            //     }
+            // });      
+
+
+    function newToolData(){
+        ToolData();
+    };
+
+
+    $("#refresh").click(function(){
+        $("#insertProducts").html("");
+        newToolData();
+    });
+
+})();
+</script>
+</body>
+</html>
