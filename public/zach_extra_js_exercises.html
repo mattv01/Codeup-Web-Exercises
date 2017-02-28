@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extra JS Exercises</title>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Hello, <span id="name"></span></h1>
+
+    <p class="small">This text should be small</p>
+    <p class="large">This text should be large</p>
+    <p class="small">This text should be small</p>
+    <p class="large">This text should be large</p>
+    <p class="small">This text should be small</p>
+    <p class="large">This text should be large</p>
+    <p class="small">This text should be small</p>
+    <p class="large">This text should be large</p>
+    <p class="small">This text should be small</p>
+    <p class="large">This text should be large</p>
+
+</div>
+
+<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".container").css({"padding": "30px"});
+
+        confirm("Would you like some paragraphs smaller?");
+        if (confirm){
+            $(".small").css({"font-size": "8px"});
+        }
+
+        alert("Im going to make some paragraphs larger");
+        $(".large").css({"font-size": "18px"});
+
+        var name = prompt("What is your name");
+        $("#name").html(name);
+
+    });
+</script>
+</body>
+</html>
