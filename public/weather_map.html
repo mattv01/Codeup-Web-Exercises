@@ -3,25 +3,24 @@
 <head>
 	<!-- meta tags -->
 	<title>Weather App</title>
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!--<link rel="stylesheet" href="css/font-awesome.min.css">--> 
 	<link rel="stylesheet" type="text/css" href="">
 </head>
 <body>
 	<h1>Weather Application</h1>
 	<h2 id="city"></h2>
-	<div id="day"></div>
-
+	<section class="" id="daysForecast"></section>
 
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
 	$(document).ready(function(){
     "use strict";
 
-    // var APPID = "9db258db207e01fdbe03bfbbd62bea72";
-    // var APPID = "d9ec37d7d3aeaa257966a18746f17922";
-    var APPID = "7f8e3aa0aad113510e0c1eaafd1c17b8";
+    // var APPID = "9db258db207e01fdbe03bfbbd62bea72"; //my first key
+    // var APPID = "d9ec37d7d3aeaa257966a18746f17922"; //my second key
+    var APPID = "7f8e3aa0aad113510e0c1eaafd1c17b8"; //justin's key
     var url = "http://api.openweathermap.org/data/2.5/forecast/daily";
 
     function getWeather() {
@@ -34,28 +33,27 @@
     		alert("Failed to load:" + status);
     	}).done(function(data){
     		console.log(data);
-    		console.log(Math.round(data.list[0].temp.day));
     		$("h2").html(data.city.name);
+    		$("#daysForecast").html("<h4>" + data.list.length + "-Day Forecast</h4>");
     		for (var i = 0; i < data.list.length; i++) {
     			var w = ""
-    			w += "<div>"
-    			w += "<h3>" + Math.round(data.list[i].temp.day) + "˚/" + Math.round(data.list[i].temp.night) + "˚(F)</h3>";
-    			// w += data.list[i].weather[0].icon;
+    			w += "<div>";
+    			w += "<h3>H: " + Math.round(data.list[i].temp.max) + "˚/L: " + Math.round(data.list[i].temp.min) + "˚</h3>";
+    			w += "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'><br>" ;
     			w += "<b>" + data.list[i].weather[0].main +  "</b>: " + data.list[i].weather[0].description + "<br>";
     			w += "<b>Humidity</b>: " + data.list[i].humidity + "%<br>";
     			w += "<b>Wind</b>: " + Math.round(data.list[i].speed) + " mph<br>";
     			w += "<b>Pressure</b>: " + Math.round(data.list[i].pressure) + " hPa";
     			w += "</div>"
-    			$("#day").append(w);
-    			$("div").css({"float":"left"});
-    			$("div>div").css({"padding":"2%"});
+    			$("#daysForecast").append(w);
 			}
-
+    			$("h1").css({"margin":"2%"});
+    			$("h2").css({"margin":"2%"});
+    			$("section").css({"margin":"2%"});
+    			$("div").css({"float":"left","padding":"1%", "border":"1px solid black"});
     	});
     }
     getWeather();
-
-
 
 
     });
