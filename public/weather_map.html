@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- meta tags -->
-	<title>Weather App</title>
+	<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">	
+    <title>Weather App</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<!--<link rel="stylesheet" href="css/font-awesome.min.css">--> 
-	<link rel="stylesheet" type="text/css" href="">
+	<!--<link rel="stylesheet" href="css/font-awesome.min.css">-->
+	<link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet"> 
+	<link rel="stylesheet" type="text/css" href="/css/weather_map.css">
 </head>
 <body>
-	<h1>Weather Application</h1>
-	<h2 id="city"></h2>
-	<section class="" id="daysForecast"></section>
-
+	<header>
+		<h1 id="title">Weather Map Application</h1>
+	</header>
+	<main>
+		<h2 id="city"></h2>
+		<section class="" id="daysForecast"></section>
+		<section class="" id="forecastMap"></section>
+	</main>
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8yU5lRs-GOxQhZ7boYDTdveBQds32R0c"></script>
 <script>
-	$(document).ready(function(){
+$(document).ready(function(){
     "use strict";
 
     // var APPID = "9db258db207e01fdbe03bfbbd62bea72"; //my first key
@@ -33,30 +42,47 @@
     		alert("Failed to load:" + status);
     	}).done(function(data){
     		console.log(data);
-    		$("h2").html(data.city.name);
+    		$("h2").html(data.city.name + "<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>" );
     		$("#daysForecast").html("<h4>" + data.list.length + "-Day Forecast</h4>");
     		for (var i = 0; i < data.list.length; i++) {
-    			var w = ""
-    			w += "<div>";
-    			w += "<h3>H: " + Math.round(data.list[i].temp.max) + "˚/L: " + Math.round(data.list[i].temp.min) + "˚</h3>";
-    			w += "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'><br>" ;
-    			w += "<b>" + data.list[i].weather[0].main +  "</b>: " + data.list[i].weather[0].description + "<br>";
-    			w += "<b>Humidity</b>: " + data.list[i].humidity + "%<br>";
-    			w += "<b>Wind</b>: " + Math.round(data.list[i].speed) + " mph<br>";
-    			w += "<b>Pressure</b>: " + Math.round(data.list[i].pressure) + " hPa";
-    			w += "</div>"
-    			$("#daysForecast").append(w);
-			}
-    			$("h1").css({"margin":"2%"});
-    			$("h2").css({"margin":"2%"});
-    			$("section").css({"margin":"2%"});
-    			$("div").css({"float":"left","padding":"1%", "border":"1px solid black"});
+    			var weatherContent = ""
+    			weatherContent += "<div class='days'><h5>Day " + (i+1) + "</h5>";
+    			weatherContent += "<h1><span class='high'>H: " + Math.round(data.list[i].temp.max) + "˚</span>  <span class='low'>L: " + Math.round(data.list[i].temp.min) + "˚</span></h1>";
+    			weatherContent += "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'>";
+    			weatherContent += "<p><b>" + data.list[i].weather[0].main +  "</b>: " + data.list[i].weather[0].description + "</p>";
+    			weatherContent += "<p><b>Humidity</b>: " + data.list[i].humidity + "%</p>";
+    			weatherContent += "<p><b>Wind</b>: " + Math.round(data.list[i].speed) + " mph</p>";
+    			weatherContent += "<p><b>Pressure</b>: " + Math.round(data.list[i].pressure) + " hPa";
+    			weatherContent += "<p></div>"
+    			$("#daysForecast").append(weatherContent);
+			}	
     	});
     }
     getWeather();
 
 
-    });
+	var mapOptions = {
+		zoom: 6,
+		center: {
+			lat: 29.425963,
+			lng: -98.486153
+		}
+	};
+ 
+	var map = new google.maps.Map(document.getElementById("forecastMap"), mapOptions);
+	
+
+	var sanAntonio = { lat: 29.425963, lng: -98.486153};
+
+	var marker = new google.maps.Marker({
+		position: sanAntonio,
+		animation: google.maps.Animation.DROP,
+		draggable:true,
+		title:"Drag Me!",
+		map: map
+	});
+	
+});
 </script>
 </body>
 </html>
