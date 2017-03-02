@@ -1,146 +1,337 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+    <!-- meta tags -->
+    <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">	
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    
+    <!-- site title -->
     <title>Weather App</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<!--<link rel="stylesheet" href="css/font-awesome.min.css">-->
-	<link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet"> 
-	<link rel="stylesheet" type="text/css" href="/css/weather_map.css">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- font awesome -->
+    <!--<link rel="stylesheet" href="css/font-awesome.min.css">-->
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+
+    <!-- own external css --> 
+    <link rel="stylesheet" type="text/css" href="/css/weather_map.css">
+
 </head>
 <body>
-	<header>
-		<h1 id="title">Weather Map Application</h1>
-	</header>
-	<main>
-		<h2 id="city"></h2>
-		<section class="" id="daysForecast"></section>
-		<section class="" id="forecastMap"></section>
-	</main>
+
+    <header>
+        <h1 id="title">Weather Map Application</h1>
+    </header>
+
+    <main>
+        <!-- Find a different city's weather -->
+        <div class="col-lg-3">
+            <label>Get Weather For...</label>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="City Name" value="">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" id="go" type="button">Go!</button>
+                </span>
+            </div>
+        </div>
+
+        <!-- Number of Days-Forecast Buttons -->
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" id="3dayForecastBtn">3-Day</button>
+            <button type="button" class="btn btn-default" id="5dayForecastBtn">5-Day</button>
+            <button type="button" class="btn btn-default" id="7dayForecastBtn">7-Day</button>
+        </div>
+
+        <!-- City Name -->
+        <h2 id="city"></h2>
+        <!-- Days Forecast -->
+        <section class="" id="daysForecast"></section>
+        <!-- Forecast Map -->
+        <section class="" id="forecastMap"></section>
+
+    </main>
 
 
+
+
+<!-- JQuery -->
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<!-- Bootstrap JS -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- Google Maps API -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8yU5lRs-GOxQhZ7boYDTdveBQds32R0c"></script>
+
+<!-- My Own JS -->
 <script>
 $(document).ready(function(){
     "use strict";
-	////my first key////
+    // my first key //
     // var APPID = "9db258db207e01fdbe03bfbbd62bea72"; 
 
-    ////my second key////
+    // my second key //
     // var APPID = "d9ec37d7d3aeaa257966a18746f17922"; 
 
-    ////justin's key////
+    // justin's key //
     var APPID = "7f8e3aa0aad113510e0c1eaafd1c17b8"; 
 
-    ////////// OpenWeather API ///////////
+    // OpenWeather API //
     var url = "http://api.openweathermap.org/data/2.5/forecast/daily";
 
-	////////// Specify the Number of Days to Forecast ///////////
+    // Specify the default Number of Days to Forecast //
     var numberOfDaysToForecast = 3;
 
-	/////Coordinates for San Antonio//////
+    // Change Number of Days to Forecast by Clicking Button //
+    $("#3dayForecastBtn").click(function(){
+        numberOfDaysToForecast = 3;
+        getWeather();
+    });
 
+    $("#5dayForecastBtn").click(function(){
+        numberOfDaysToForecast = 5;
+        getWeather();
+    });
+
+    $("#7dayForecastBtn").click(function(){
+        numberOfDaysToForecast = 7;
+        getWeather();
+    });
+
+    // Coordinates for San Antonio //
     var lat = 29.425963;
     var lng = -98.486153;
 
 
-	////////// Get weather for city by coordinates from above ///////////
-
+    // Get weather for city by coordinates from above //
     function getWeather() {
-    	$.get(url, {
-    		APPID: APPID, 
-    		lat: lat, 
-    		lon: lng,
-    		cnt: numberOfDaysToForecast, 
-    		units: "imperial"
-    	}).fail(function(data, status){
-    		alert("Failed to load:" + status);
-    	}).done(function(data){
-    		$("h2").html(data.city.name + "<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>" );
-    		$("#daysForecast").html("<h4>" + data.list.length + "-Day Forecast</h4>");
-    		for (var i = 0; i < data.list.length; i++) {
-    			var weatherContent = ""
-    			weatherContent += "<div class='days'><h5>Day " + (i+1) + "</h5>";
-    			weatherContent += "<h1><span class='high'>H: " + Math.round(data.list[i].temp.max) + "˚</span>  <span class='low'>L: " + Math.round(data.list[i].temp.min) + "˚</span></h1>";
-    			weatherContent += "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'>";
-    			weatherContent += "<p><b>" + data.list[i].weather[0].main +  "</b>: " + data.list[i].weather[0].description + "</p>";
-    			weatherContent += "<p><b>Humidity</b>: " + data.list[i].humidity + "%</p>";
-    			weatherContent += "<p><b>Wind</b>: " + Math.round(data.list[i].speed) + " mph</p>";
-    			weatherContent += "<p><b>Pressure</b>: " + Math.round(data.list[i].pressure) + " hPa";
-    			weatherContent += "<p></div>"
-    			$("#daysForecast").append(weatherContent);
-			}	
-    	});
-    }
+        // get request //
+        $.get(url, {
+            APPID: APPID, 
+            lat: lat, 
+            lon: lng,
+            cnt: numberOfDaysToForecast, 
+            units: "imperial"
+
+        // if request fails //  
+        }).fail(function(data, status){
+            alert("Failed to load:" + status);
+
+        // if request is a success //   
+        }).done(function(data){
+            $("h2").html(data.city.name + "<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>" );
+            $("#daysForecast").html("<h4>" + data.list.length + "-Day Forecast</h4>");
+            for (var i = 0; i < data.list.length; i++) {
+                var weatherContent = ""
+                weatherContent += "<div class='days'>"
+                weatherContent += "<h5>Day " + (i+1) + "</h5>";
+                weatherContent += "<h1><span class='high'>H: " + Math.round(data.list[i].temp.max) + "˚</span>  <span class='low'>L: " + Math.round(data.list[i].temp.min) + "˚</span></h1>";
+                weatherContent += "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'>";
+                weatherContent += "<p><b>" + data.list[i].weather[0].main +  "</b>: " + data.list[i].weather[0].description + "</p>";
+                weatherContent += "<p><b>Humidity</b>: " + data.list[i].humidity + "%</p>";
+                weatherContent += "<p><b>Wind</b>: " + Math.round(data.list[i].speed) + " mph</p>";
+                weatherContent += "<p><b>Pressure</b>: " + Math.round(data.list[i].pressure) + " hPa</p>";
+                weatherContent += "</div>"
+                $("#daysForecast").append(weatherContent);
+            }
+            if(numberOfDaysToForecast == 5 && $(window).width() >= 768){
+                $(".days").css({"width":"20%"});
+            } else if (numberOfDaysToForecast == 7 && $(window).width() >= 768) {
+                $(".days").css({"width":"25%"});
+            }
+        }); //closes done function
+    } //closes getWeather function
     getWeather();
 
 
-	////////// Making the map ///////////
+    ////////// Making the map ///////////
 
-	var mapOptions = {
-		zoom: 6,
-		center: {
-			lat: 29.425963,
-			lng: -98.486153
-		}
-	};
+    var mapOptions = {
+        zoom: 6,
+        center: {
+            lat: 29.425963,
+            lng: -98.486153
+        }
+    };
  
-	var map = new google.maps.Map(document.getElementById("forecastMap"), mapOptions);
-	
-
-	////////// Where to first place the marker ///////////
-
-	var city = { lat: 29.425963, lng: -98.486153}; //san antonio
-
-	var marker = new google.maps.Marker({
-		position: city,
-		animation: google.maps.Animation.DROP,
-		draggable:true,
-		title:"Drag Me!",
-		map: map
-	});
+    var map = new google.maps.Map(document.getElementById("forecastMap"), mapOptions);
+    
 
 
-	////////// Change weather for a city by dragging marker ///////////
+    ////////// Where to first place the marker ///////////
 
-	google.maps.event.addListener(marker, 'dragend', function (event) {
-	    var lat = this.getPosition().lat();
-	    var lng = this.getPosition().lng();
-	    
-	    function getWeather() {
-    		$.get(url, {
-    			APPID: APPID, 
-    			lat: lat, 
-    			lon: lng,
-    			cnt: numberOfDaysToForecast, 
-    			units: "imperial"
-    		}).fail(function(data, status){
-    			alert("Failed to load:" + status);
-    		}).done(function(data){
-    			$("h2").html(data.city.name + "<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>" );
-    			$("#daysForecast").html("<h4>" + data.list.length + "-Day Forecast</h4>");
-    			for (var i = 0; i < data.list.length; i++) {
-    				var weatherContent = ""
-    					weatherContent += "<div class='days'><h5>Day " + (i+1) + "</h5>";
-    					weatherContent += "<h1><span class='high'>H: " + Math.round(data.list[i].temp.max) + "˚</span>  <span class='low'>L: " + Math.round(data.list[i].temp.min) + "˚</span></h1>";
-    					weatherContent += "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'>";
-    					weatherContent += "<p><b>" + data.list[i].weather[0].main +  "</b>: " + data.list[i].weather[0].description + "</p>";
-    					weatherContent += "<p><b>Humidity</b>: " + data.list[i].humidity + "%</p>";
-    					weatherContent += "<p><b>Wind</b>: " + Math.round(data.list[i].speed) + " mph</p>";
-    					weatherContent += "<p><b>Pressure</b>: " + Math.round(data.list[i].pressure) + " hPa";
-    					weatherContent += "<p></div>"
-    					$("#daysForecast").append(weatherContent);
-				}
-    		});
-    	}
-    	getWeather();
-	});
+    var city = { lat: 29.425963, lng: -98.486153}; //san antonio
 
+    var marker = new google.maps.Marker({
+        position: city,
+        animation: google.maps.Animation.DROP,
+        draggable:true,
+        title:"Drag Me!",
+        map: map
+    });
+
+
+
+    ////////// Change weather for a city by dragging marker ///////////
+
+    google.maps.event.addListener(marker, 'dragend', function (event) {
+        var lat = this.getPosition().lat();
+        var lng = this.getPosition().lng();
+
+        function getWeather() {
+        // get request //
+            $.get(url, {
+                APPID: APPID, 
+                lat: lat, 
+                lon: lng,
+                cnt: numberOfDaysToForecast, 
+                units: "imperial"
+
+            // if request fails //  
+            }).fail(function(data, status){
+                alert("Failed to load:" + status);
+
+            // if request is a success //   
+            }).done(function(data){
+                $("h2").html(data.city.name + "<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>" );
+                $("#daysForecast").html("<h4>" + data.list.length + "-Day Forecast</h4>");
+                for (var i = 0; i < data.list.length; i++) {
+                    var weatherContent = ""
+                    weatherContent += "<div class='days'>"
+                    weatherContent += "<h5>Day " + (i+1) + "</h5>";
+                    weatherContent += "<h1><span class='high'>H: " + Math.round(data.list[i].temp.max) + "˚</span>  <span class='low'>L: " + Math.round(data.list[i].temp.min) + "˚</span></h1>";
+                    weatherContent += "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'>";
+                    weatherContent += "<p><b>" + data.list[i].weather[0].main +  "</b>: " + data.list[i].weather[0].description + "</p>";
+                    weatherContent += "<p><b>Humidity</b>: " + data.list[i].humidity + "%</p>";
+                    weatherContent += "<p><b>Wind</b>: " + Math.round(data.list[i].speed) + " mph</p>";
+                    weatherContent += "<p><b>Pressure</b>: " + Math.round(data.list[i].pressure) + " hPa</p>";
+                    weatherContent += "</div>"
+                    $("#daysForecast").append(weatherContent);
+                }
+                if(numberOfDaysToForecast == 5 && $(window).width() >= 768){
+                    $(".days").css({"width":"20%"});
+                } else if (numberOfDaysToForecast == 7 && $(window).width() >= 768) {
+                    $(".days").css({"width":"25%"});
+                }
+            }); //closes done function after drag
+        } //closes getWeather function after dragging
+        getWeather();
+    }); //closes drag function
+
+
+    $("#go").click(function(){
+        var go = $('input:text').val();
+        function getWeather() {
+            // get request //
+            $.get(url, {
+                APPID: APPID, 
+                q: go,
+                cnt: numberOfDaysToForecast, 
+                units: "imperial"
+
+            // if request fails //  
+            }).fail(function(data, status){
+                alert("Failed to load:" + status);
+
+            // if request is a success //   
+            }).done(function(data){
+                $("h2").html(data.city.name + "<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>" );
+                $("#daysForecast").html("<h4>" + data.list.length + "-Day Forecast</h4>");
+                for (var i = 0; i < data.list.length; i++) {
+                    var weatherContent = ""
+                    weatherContent += "<div class='days'>"
+                    weatherContent += "<h5>Day " + (i+1) + "</h5>";
+                    weatherContent += "<h1><span class='high'>H: " + Math.round(data.list[i].temp.max) + "˚</span>  <span class='low'>L: " + Math.round(data.list[i].temp.min) + "˚</span></h1>";
+                    weatherContent += "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'>";
+                    weatherContent += "<p><b>" + data.list[i].weather[0].main +  "</b>: " + data.list[i].weather[0].description + "</p>";
+                    weatherContent += "<p><b>Humidity</b>: " + data.list[i].humidity + "%</p>";
+                    weatherContent += "<p><b>Wind</b>: " + Math.round(data.list[i].speed) + " mph</p>";
+                    weatherContent += "<p><b>Pressure</b>: " + Math.round(data.list[i].pressure) + " hPa</p>";
+                    weatherContent += "</div>"
+                    $("#daysForecast").append(weatherContent);
+                }
+                if(numberOfDaysToForecast == 5 && $(window).width() >= 768){
+                    $(".days").css({"width":"20%"});
+                } else if (numberOfDaysToForecast == 7 && $(window).width() >= 768) {
+                    $(".days").css({"width":"25%"});
+                }
+
+                var lat = data.city.coord.lat;
+                var lng = data.city.coord.lon;
+
+                var mapOptions = {
+                    zoom: 6,
+                    center: {
+                        lat: lat,
+                        lng: lng
+                    }
+                };
+     
+                var map = new google.maps.Map(document.getElementById("forecastMap"), mapOptions);
+
+                var city = { lat: lat, lng: lng};
+
+                var newmarker = new google.maps.Marker({
+                    position: city,
+                    animation: google.maps.Animation.DROP,
+                    draggable:true,
+                    title:"Drag Me!",
+                    map: map
+                });
+
+                google.maps.event.addListener(newmarker, 'dragend', function (event) {
+                    var lat = this.getPosition().lat();
+                    var lng = this.getPosition().lng();
+
+                    function getWeather() {
+                    // get request //
+                        $.get(url, {
+                            APPID: APPID, 
+                            lat: lat, 
+                            lon: lng,
+                            cnt: numberOfDaysToForecast, 
+                            units: "imperial"
+
+                        // if request fails //  
+                        }).fail(function(data, status){
+                            alert("Failed to load:" + status);
+
+                        // if request is a success //   
+                        }).done(function(data){
+                            $("h2").html(data.city.name + "<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>" );
+                            $("#daysForecast").html("<h4>" + data.list.length + "-Day Forecast</h4>");
+                            for (var i = 0; i < data.list.length; i++) {
+                                var weatherContent = ""
+                                weatherContent += "<div class='days'>"
+                                weatherContent += "<h5>Day " + (i+1) + "</h5>";
+                                weatherContent += "<h1><span class='high'>H: " + Math.round(data.list[i].temp.max) + "˚</span>  <span class='low'>L: " + Math.round(data.list[i].temp.min) + "˚</span></h1>";
+                                weatherContent += "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png'>";
+                                weatherContent += "<p><b>" + data.list[i].weather[0].main +  "</b>: " + data.list[i].weather[0].description + "</p>";
+                                weatherContent += "<p><b>Humidity</b>: " + data.list[i].humidity + "%</p>";
+                                weatherContent += "<p><b>Wind</b>: " + Math.round(data.list[i].speed) + " mph</p>";
+                                weatherContent += "<p><b>Pressure</b>: " + Math.round(data.list[i].pressure) + " hPa</p>";
+                                weatherContent += "</div>"
+                                $("#daysForecast").append(weatherContent);
+                            }
+                            if(numberOfDaysToForecast == 5 && $(window).width() >= 768){
+                                $(".days").css({"width":"20%"});
+                            } else if (numberOfDaysToForecast == 7 && $(window).width() >= 768) {
+                                $(".days").css({"width":"25%"});
+                            }
+                        }); //closes done function after drag
+                    } //closes getWeather function from drag function
+                    getWeather();
+                }); //closes marker drag function
+            }); //closes done function after type input
+        } //closes getWeather function from type input
+        getWeather();
+    }); //closes go button click function 
 });
 </script>
 </body>

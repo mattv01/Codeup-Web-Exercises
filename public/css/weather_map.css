@@ -82,25 +82,60 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */   
+
+
 /*****************************   MOBILE STYLES   ********************************/
+
+html {
+	padding-bottom: 7%;
+}
 
 body {
 	background-color: #f7f6d7;
 	padding: 5%;
 }
 
-.days {
-	width: 100%
-}
-
 #title {
 	font-family: 'Shrikhand', cursive; 
-	font-size:45px;
+	font-size: 45px;
 	margin: auto;
 }
 
+div.btn-group {
+	margin-top: 10%;
+	margin-left: 5%;
+}
+
+div.col-lg-3 {
+	margin-top: 10%; 
+}
+
+.btn {
+	background-color: #e2e2de;
+}
+
+.btn:hover {
+	background-color: grey;
+	color: white;
+}
+
 h2 {
-	margin-left:5%
+	margin-left: 5%;
+}
+
+#daysForecast { 
+	width: 100%;
+	padding: 5%;
+	padding-top: 0;
+} 
+
+.days {
+	width: 100%;
+	float: left;
+	margin: none;
+	border: 1px solid black; 
+	text-align: center;
+	background-color: #e2e2de
 }
 
 h5 {
@@ -108,35 +143,20 @@ h5 {
 	padding: 1%;
 }
 
-#daysForecast { 
-	width:100%;
-	padding: 5%;
-	padding-top: 0;
-
-} 
-
-#forecastMap {
-	margin:5%
-}
-
-.days {
-	float:left;
-	margin:none;
-	border:1px solid black; 
-	text-align:center;
-	background-color:#e2e2de
-}
-
 .high {
-	color:red
+	color: red
 }
 
 .low {
-	color:#24c5f2
+	color: #24c5f2
 }
 
 p {
-	font-size:16px
+	font-size: 16px
+}
+
+#forecastMap {
+	margin: 5%
 }
 
 /*****************************   END OF MOBILE STYLES   ********************************/
@@ -259,25 +279,37 @@ body {
 	padding: 1%;
 }
 
+#title {
+	font-size: 80px;
+	margin-left: 5%;
+}
+
+div.btn-group {
+	margin-top: 5%;
+}
+
+div.col-lg-3 {
+	float: right;
+	width: 30%;
+	margin-right: 5%;
+	margin-top: 12%;
+}
+
 #daysForecast {
 	padding-left: 5%;
 }	
 
 .days {
-	width: 30%;
+	width: 33.33%;
 	display: block;
 	margin: auto;
 }
+
 #forecastMap {
-	width: 81%;
+	width: 90%;
 	height: 400px;
 }
 
-#title {
-	font-size:50px;
-	display: block;
-	margin: auto;
-}
 
 }
 /******************************   END OF TABLET STYLES   ********************************/
@@ -294,12 +326,26 @@ body {
 
 /*******************************   DESKTOP STYLES   *************************************/
 
-
 @media (min-width:940px) {
 	
+div.btn-group {
+	margin-top: 1%;
+}
+
+div.col-lg-3 {
+	width: 25%;
+	margin-top: 5%; 
+}
+
+#title {
+	font-size: 90px;
+	margin: auto;
+}
+
 #forecastMap {
 	height: 481px;
 }
+
 
 }
 /******************************  END OF DESKTOP STYLES   ********************************/
