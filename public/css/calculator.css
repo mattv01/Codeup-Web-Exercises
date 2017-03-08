@@ -20,8 +20,8 @@ h1 {
 }
 
 button {
-	width: 80px; 
-	height: 80px;
+	width: 77px; 
+	height: 77px;
 	background-color: black;
 	color: white;
 	font-family: 'VT323', monospace;
@@ -31,10 +31,6 @@ button {
 
 button#sqrt{
 	font-size: 45px;
-}
-
-button:hover {
-	background-color: grey;
 }
 
 .inputs {
@@ -137,6 +133,10 @@ button {
 	height: 125px;
 	width: 125px;
 	font-size: 80px;
+}
+
+button:hover {
+	background-color: grey;
 }
 
 button#sqrt{
