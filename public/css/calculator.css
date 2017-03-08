@@ -1,68 +1,168 @@
+/*****************************   MOBILE STYLES   ********************************/
+
 body{
 	width: auto;
 	height: auto;
 	background-color: #CCCCCC;
-	border: 10px solid black;
-	padding: 5px;
+	padding: 1%;
+}
+
+h1 {
+	text-align: center;
+	font-family: 'VT323', monospace;
+	font-size: 60px;
+	margin: 1%;
+}
+
+.buttons {
+	margin-left: 2%;
+	display: block;
 }
 
 button {
-	width: 100px; 
-	height:100px;
-	margin: 3px;
+	width: 80px; 
+	height: 80px;
 	background-color: black;
 	color: white;
 	font-family: 'VT323', monospace;
-	font-size: 60px;
-	border-radius: 20px;
+	font-size: 50px;
+	border-radius: 20%;
+}
+
+button#sqrt{
+	font-size: 45px;
 }
 
 button:hover {
 	background-color: grey;
 }
 
+.inputs {
+	margin-left: 5%;
+}
+
 input {
-	width: 185px; 
+	width: 40%; 
 	height: 50px;
-	margin: 3px;
 	margin-bottom: 10px;
 	background-color: #999933;
 	font-family: 'VT323', monospace;
-	font-size: 55px;
 	border-color: black;
 	border-radius: 5px;
 }
 
 #input1, #input3 {
 	text-align: center;
+	font-size: 60px;
 }
 
 #input2 {
-	width: 20px;
+	width: 8%;
 	text-align: center;
-	font-size: 50px;
+	font-size: 60px;
 }
+/*****************************   END OF MOBILE STYLES   ********************************/
 
-button#sqrt {
-	font-size: 55px;
-}
+
+
+
+
+/********************************   TABLET STYLES   *************************************/
 
 @media (min-width:768px) {      	
 
-	body{
-		padding-top: 40px;
-		padding-left: 200px;
-		border: none;
-	}
+h1 {
+	font-size: 100px;
+	margin: 0px;
+}
 
+body {
+	margin-top: 0px;
+}
+
+button {
+	height: 150px;
+	width: 150px;
+	font-size: 90px;
+}
+
+button#sqrt {
+	font-size: 80px;
+}
+
+.buttons {
+	margin-left: 7%;
+}
+
+.inputs {
+	margin-left: 10%;
+}
+
+input {
+	width: 36%;
+	height: 15%;
+}
+
+#input1, #input3 {
+	text-align: center;
+	font-size: 90px;
+}
+
+#input2 {
+	width: 8%;
+	text-align: center;
+	font-size: 90px;
+}
+
+}
+/******************************   END OF TABLET STYLES   ********************************/
+
+
+
+
+
+/*******************************   DESKTOP STYLES   *************************************/
+
+@media (min-width:940px) { 
+
+h1 {
+	font-size: 125px;
+}
+
+.buttons {
+	margin-left: 30%;
+}
+
+button {
+	height: 125px;
+	width: 125px;
+	font-size: 80px;
+}
+
+button#sqrt{
+	font-size: 75px;
+}
+
+input {
+	width: 20%;
+	height: 60px;
+}
+
+.inputs {
+	margin-left: 31%;
+}
+
+#input1, #input3 {
+	text-align: center;
+	font-size: 80px;
+}
+
+#input2 {
+	width: 8%;
+	text-align: center;
+	font-size: 80px;
 }
 
 
-@media (min-width:940px) {      	
-
-	body{
-		padding-top: 40px;
-		padding-left: 350px;
-	}
-
-}
+} 
+/******************************  END OF DESKTOP STYLES   ********************************/
