@@ -225,7 +225,14 @@ $(document).ready(function(){
     }); //closes drag function
 
 
-    $("#go").click(function(){
+    $(document).keydown(function(key) {
+        if(key.keyCode == 13){
+            goClicked();
+        }
+    });
+
+    $("#go").click(goClicked);
+        function goClicked(){
         var go = $('input:text').val();
         function getWeather() {
             // get request //
@@ -331,7 +338,7 @@ $(document).ready(function(){
             }); //closes done function after type input
         } //closes getWeather function from type input
         getWeather();
-    }); //closes go button click function 
+    }; //closes go button click function 
 });
 </script>
 </body>
