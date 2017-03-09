@@ -15,6 +15,7 @@ p {
 
 a {
 	color:black;
+	width: 100%;
 }
 
 a:hover {
@@ -62,7 +63,7 @@ nav ul li {
 
 nav ul li a{
 	color: #536B78; 
-	font-family: 'VT323', monospace;
+	font-family: 'Teko', sans-serif;
 	font-size: 2em;
 	width: auto;
 	text-transform: uppercase;
@@ -83,13 +84,13 @@ main {
 }
 
 main img {
-	width: 50%;
+	width: 70%;
 	height: 50%;
 	margin: auto;
 }
 
 main p {
-	font-family: copperplate;
+	font-family: ;
 	color: black;
 }
 
@@ -100,7 +101,7 @@ main p {
 }
 
 .img-thumbnail{
-	margin-top: 50px;
+	margin-top: 7%;
 	display: block;
 }
 
@@ -115,9 +116,26 @@ dd {
 .thumbnail {
 	background-color: #536B78;
 }
+.thumbnail img {
+	width: 100%;
+}
 
-.caption p, h3{
+.thumbnail .caption p {
 	font-family: 'Coming Soon', cursive;
+	color: white;
+}
+
+.thumbnail .caption p a{
+	color: black;
+}
+
+.thumbnail .caption p a:hover{
+	color: white;
+}
+
+h3{
+	font-family: 'Coming Soon', cursive;
+	color: #CEE5F2;
 }
 
 a.btn.btn-primary{
@@ -284,4 +302,3 @@ footer{
 
 
 }
-
