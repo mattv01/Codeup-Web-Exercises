@@ -155,7 +155,7 @@ a.btn.btn-primary:hover{
 	text-transform: uppercase;
 	font-weight: bold;
 	display: inline;
-	font-size: 1em;
+	font-size: 10px;
 	text-align: center;
 }
 
@@ -167,6 +167,9 @@ a.btn.btn-primary:hover{
 	color: black;
 }
 
+.col-sm-4 {
+	padding-right: 0px;
+}
 
 /***************************************	TABLET STYLES 	**********************************/
 
