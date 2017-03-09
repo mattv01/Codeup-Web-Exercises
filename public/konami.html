@@ -1,182 +1,238 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Konami Code</title>
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <style type="text/css"> 
-    	h1 {
-    		font-size: 200px;
-    		text-align: center;
-    		margin: 0px;
-    		padding-top: 70px;
-    	}
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    	img {
-    		display: none;
-    		width: 140px;
-    		height: 140px;
-    		position: relative;
-    	}
-    </style>
+	<title>Konami Code</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/konami.css">
 </head>
 
 <body>
-    <main>
-    	<h1>Do You Know The Konami C<img src="http://rsmg.pbsrc.com/albums/v513/Cava-Chan/DOOM/cacodemon_11.gif~c200"><span>o</span>de??</h1>
+	<main>
+		<h1>Do You Know The Konami C<img src="http://rsmg.pbsrc.com/albums/v513/Cava-Chan/DOOM/cacodemon_11.gif~c200"><span>o</span>de??</h1>
 		<h2></h2>
-    </main>
-
+		<section>
+			<div class="controller">
+				<div class="leftCircle">
+					<div class="innerCircle">
+						<button class="dPad" id="left"></button>
+						<button class="dPad" id="right"></button>
+						<button class="dPad" id="down"></button>
+						<button class="dPad" id="up"></button>
+					</div>
+				</div>
+				<div class="middle">
+					<div class="superNintendo">super nintendo</div>
+					<button class="select"></button>
+					<span class="buttonText selectButton">select</span>
+					<button class="start"></button>
+					<span class="buttonText startButton">start</span>
+				</div>
+				<div class="rightCircle">
+					<div class="buttonCircle">
+						<div class="buttonHolder">
+						   <button class="buttons y">X</button>
+						   <button class="buttons x">Y</button>
+						</div>
+						<div class="buttonHolder bottom">
+							<button class="buttons b">B</button>
+							<button class="buttons a">A</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
 
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
 <script>
-    "use strict";
+	"use strict";
 
- 	$(document).ready(function(){
- 		
-		//////////////////////////////////////////////// CACODEMON ANIMATION /////////////////////////////////////////////////
+	$(document).ready(function(){
+		
+		/////////////////////// CACODEMON ANIMATION //////////////////////////
 
- 		$("img").fadeIn(3000);
- 		$("span").hide();
-        
-        var timeInterval = 2000;
-        var movement = 400;
+		$("img").fadeIn(3000);
+		$("span").hide();
+		
+		var timeInterval = 2000;
+		var movement = 400;
 
 		var time = (Math.ceil(Math.random()*timeInterval))+500;
 		var move = (Math.ceil(Math.random()*movement))+100;
 
-        $("img").hover(function(){
-        	$(this).animate({
-        		right: move + "px",
-        		bottom: move + "px"
-        	}, time).animate({
-        		right: -move + "px",
-        		top: -move + "px"
-        	}, time).animate({
-        		left: -move + "px",
-        		bottom: -move + "px"
-        	}, time).animate({
-        		left: move + "px",
-        		top: move + "px"
-        	}, time).animate({
-        		left: move + "px",
-        		top: move + "px"
-        	}, time).animate({
-        		right: -move + "px",
-        		top: -move + "px"
-        	}, time).animate({
-        		top: move + "px",
-        		right: move + "px"
-        	}, time).animate({
-        		top: -move + "px",
-        		left: -move + "px"
-        	}, time).animate({
-        		top: -move + "px",
-        		left: -move + "px"
-        	}, time).animate({
-        		bottom: move + "px",
-        		left: move + "px"
-        	}, time).animate({
-        		top: move + "px",
-        		right: move + "px"
-        	}, time).animate({
-        		bottom: -move + "px",
-        		right: -move + "px"
-        	}, time)
-        });
+		$("img").hover(function(){
+			$(this).animate({
+				right: move + "px",
+				bottom: move + "px"
+			}, time).animate({
+				right: -move + "px",
+				top: -move + "px"
+			}, time).animate({
+				left: -move + "px",
+				bottom: -move + "px"
+			}, time).animate({
+				left: move + "px",
+				top: move + "px"
+			}, time).animate({
+				left: move + "px",
+				top: move + "px"
+			}, time).animate({
+				right: -move + "px",
+				top: -move + "px"
+			}, time).animate({
+				top: move + "px",
+				right: move + "px"
+			}, time).animate({
+				top: -move + "px",
+				left: -move + "px"
+			}, time).animate({
+				top: -move + "px",
+				left: -move + "px"
+			}, time).animate({
+				bottom: move + "px",
+				left: move + "px"
+			}, time).animate({
+				top: move + "px",
+				right: move + "px"
+			}, time).animate({
+				bottom: -move + "px",
+				right: -move + "px"
+			}, time)
+		});
 
 
-		//////////////////////////////////////////////// KONAMI CODE /////////////////////////////////////////////////
-
+		////////////////////////// KONAMI CODE //////////////////////////////
 		var konami = [];
-		var konamiCode = "38,38,40,40,37,39,37,39,66,65,13";
+		var konamiCode = "38,38,40,40,37,39,37,39,66,65";
 	
+		getKonami();
+
+		function getKonami(){
+			$("#up").click(function(){
+				konami.push(38);
+			});
+
+			$("#down").click(function(){
+				konami.push(40);
+			});
+
+			$("#left").click(function(){
+				konami.push(37);
+			});
+
+			$("#right").click(function(){
+				konami.push(39);
+			});
+
+			$(".b").click(function(){
+				konami.push(66);
+			});
+
+			$(".a").click(function(){
+				konami.push(65);
+			});
+			checkKonami();
+		}; //close getKonami function
+
 		$(document).keydown(function(key) {
-	
 			konami.push(key.keyCode);
-	
-		  	if (konami.toString().indexOf(konamiCode) >= 0) {
+			checkKonami();
+		});
 
-				/////////////////////////// DOOM BACKGROUND /////////////////////////////
-	
-		  		$("body").css("background-image", "url(https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg)");
-				
-	
-				/////////////////////////// SOLDIER HEAD /////////////////////////////
-	
-		  		$("main").css({
-		  			"background-image" : "url(http://media.moddb.com/cache/images/downloads/1/64/63046/thumb_620x2000/EDGE.gif)",
-		  			"padding" : "90px", 
-		  			"height" : "750px" 
-				});
-	
-	
-				/////////////////////////// GAME UNLOCKED!! /////////////////////////////
-	
-		  		$("h1").html("GAME UNLOCKED!!");
-		  		$("h1").css({
-		  			"background-image" : "url(http://orig11.deviantart.net/4e07/f/2010/328/2/1/hell_baron_by_ribozurai-d33i3og.gif)", 
-		  			"font-size" : "70px", 
-		  			"padding-top" : "250px", 
-		  			"padding-bottom" : "200px", 
-    				"text-shadow": "0 0 10px #FF0000",
-		  			"font-family" : "'Press Start 2P', cursive", 
-		  			"color" : "#fdf733", 
-		  			"text-align" : "center"
-		  		});
-				$("h1").each(function() {
-				    var unlockBlink = $(this);
-				    setInterval(function() {
-				        if (unlockBlink.css("visibility") == "hidden") {
-				            unlockBlink.css("visibility", "visible");
-				        } else {
-				            unlockBlink.css("visibility", "hidden");
-				        }    
-				    }, 250);
-				});
-	
+		function checkKonami(){
+			if (konami.toString().indexOf(konamiCode) >= 0) {
+				gameUnlocked();
+			}
+		};
+			
+		function gameUnlocked(){
+			$(".controller").css({"display":"none"});
 
-				/////////////////////////// (PRESS SPACEBAR TO PLAY) /////////////////////////////
-	
-		  		$("h2").html("(PRESS SPACEBAR TO PLAY)");
-		  		$("h2").css({
-		  			"color" : "white",
-		  			"font-family" : "'Press Start 2P', cursive",
-		  			"text-shadow" : "-3px 0 black, 0 3px black, 3px 0 black, 0 -3px black",
-		  			"text-align" : "center",
-		  			"padding-top" : "100px"
-		  		});
-		  		$("h2").each(function() {
-				    var pressToPlayBlink = $(this);
-				    setInterval(function() {
-				        if (pressToPlayBlink.css("visibility") == "hidden") {
-				            pressToPlayBlink.css("visibility", "visible");
-				        } else {
-				            pressToPlayBlink.css("visibility", "hidden");
-				        }    
-				    }, 900);
-				});
+			/////////////////////////// DOOM MUSIC /////////////////////////////
+			var doomMusic = document.createElement('audio');
+			doomMusic.setAttribute('src', 'http://www.doom2.net/doomdepot/music/pc%20doom/E1M1%20-%20At%20Doom\'s%20Gate.mp2');
+			doomMusic.volume = 0.5;
+			doomMusic.play();
 
 
-				/////////////////////////// DOOM MUSIC /////////////////////////////
-	
-		  		var doomMusic = document.createElement('audio');
-    			doomMusic.setAttribute('src', 'http://www.doom2.net/doomdepot/music/pc%20doom/E1M1%20-%20At%20Doom\'s%20Gate.mp2');	
-    			doomMusic.volume = 0.5;
-    			doomMusic.play();
+			/////////////////////////// DOOM BACKGROUND /////////////////////////////
+			$("body").css("background-image", "url(https://upload.wikimedia.org/wikipedia/en/5/57/Doom_cover_art.jpg)");
+			
+
+			/////////////////////////// SOLDIER HEAD /////////////////////////////
+			$("main").css({
+				"background-image" : "url(http://media.moddb.com/cache/images/downloads/1/64/63046/thumb_620x2000/EDGE.gif)",
+				"padding" : "90px",
+				"height" : "750px"
+			});
 
 
-				/////////////// RELOAD PAGE BY SPACEBAR ////////////////
-				
-				$(document).keydown(function(key) {
-					if(key.keyCode == 32){
-						location.reload();
+			/////////////////////////// GAME UNLOCKED!! /////////////////////////////
+			$("h1").html("GAME UNLOCKED!!");
+
+			$("h1").css({
+				"background-image" : "url(http://orig11.deviantart.net/4e07/f/2010/328/2/1/hell_baron_by_ribozurai-d33i3og.gif)",
+				"font-size" : "70px",
+				"padding-top" : "250px",
+				"padding-bottom" : "200px",
+				"text-shadow": "0 0 10px #FF0000",
+				"font-family" : "'Press Start 2P', cursive",
+				"color" : "#fdf733",
+				"text-align" : "center"
+			});
+
+			$("h1").each(function() {
+				var unlockBlink = $(this);
+				setInterval(function() {
+					if (unlockBlink.css("visibility") == "hidden") {
+						unlockBlink.css("visibility", "visible");
+					} else {
+						unlockBlink.css("visibility", "hidden");
 					}
-				});   
+				}, 250);
+			});
 
-			} //ends if statement
-		}); //ends document keydown
+
+			/////////////////////////// (PRESS SPACEBAR TO PLAY) /////////////////////////////
+			$("h2").html("(PRESS SPACEBAR TO PLAY)");
+
+			$("h2").css({
+				"color" : "white",
+				"font-family" : "'Press Start 2P', cursive",
+				"text-shadow" : "-3px 0 black, 0 3px black, 3px 0 black, 0 -3px black",
+				"text-align" : "center",
+				"padding-top" : "100px"
+			});
+
+			$("h2").each(function() {
+				var pressToPlayBlink = $(this);
+				setInterval(function() {
+					if (pressToPlayBlink.css("visibility") == "hidden") {
+						pressToPlayBlink.css("visibility", "visible");
+					} else {
+						pressToPlayBlink.css("visibility", "hidden");
+					}
+				}, 900);
+			});
+
+
+			/////////////// RELOAD PAGE BY SPACEBAR ////////////////
+			$(document).keydown(function(key) {
+				if(key.keyCode == 32){
+					location.reload();
+				}
+			});
+
+		}; //closes gameUnlocked function
+
 	}); //ends document ready
 </script>
 </body>
