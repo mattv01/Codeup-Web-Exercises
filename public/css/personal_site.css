@@ -62,7 +62,8 @@ nav ul li {
 }
 
 nav ul li a{
-	color: #536B78; 
+	/*color: #536B78; */
+	color: black;
 	font-family: 'Teko', sans-serif;
 	font-size: 2em;
 	width: auto;
@@ -151,11 +152,10 @@ a.btn.btn-primary:hover{
 }
 
 .page-footer p{
-	font-family: 'Coming Soon', cursive;
-	text-transform: uppercase;
+	font-family: 'Teko', sans-serif;
 	font-weight: bold;
 	display: inline;
-	font-size: 10px;
+	font-size: 20px;
 	text-align: center;
 }
 
@@ -167,8 +167,8 @@ a.btn.btn-primary:hover{
 	color: black;
 }
 
-.col-sm-4 {
-	padding-right: 0px;
+.col-sm-6 {
+	padding-left: 28px;
 }
 
 /***************************************	TABLET STYLES 	**********************************/
@@ -177,7 +177,9 @@ a.btn.btn-primary:hover{
 
 
 
-
+main {
+	padding-top: 18%;
+}
 
 
 
@@ -245,13 +247,6 @@ nav {
 
 nav ul li {
 	width: auto;
-}
-
-nav ul li a{
-	color: #536B78; 
-	font-family: 'VT323', monospace;
-	font-size: 2em;
-	text-transform: uppercase;
 }	
 
 .nav>li>a:hover {
@@ -261,13 +256,12 @@ nav ul li a{
 }
 
 main {
-	padding-top: 5%;
+	padding-top: 0%;
 	padding-bottom: 20%;	
 }
 
 main img {
-	width: 40%;
-	height: 40%;
+	width: 37%;
 }
 
 .home p{
@@ -277,8 +271,7 @@ main img {
 }
 
 .quest {
-	padding-top: 10%;
-
+    padding-top: 4%;
 }
 
 dt {
@@ -295,13 +288,15 @@ footer{
 }
 
 .page-footer p{
-	font-family: 'Coming Soon', cursive;
-	text-transform: uppercase;
-	font-weight: bold;
-	display: inline;
-	font-size: 1.5em;
-	text-align: center;
+	font-size: 2.5em;
 }
 
+.col-sm-6 {
+	margin: 0px;
+}
+
+.img-thumbnail {
+	margin-top: 0px;
+}
 
 }
