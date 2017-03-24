@@ -19,7 +19,7 @@ $myFavoriteThings = ["hockey", "golfing", "music", "movies", "margot robbie"];
 </head>
 <body>
 
-<table border="1px" class=table-striped>
+<table border="1px" class="table-striped">
 	<thead>
 		<th>#</th>
 		<th>My Favorite Things</th>
