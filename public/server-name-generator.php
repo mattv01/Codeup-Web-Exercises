@@ -14,11 +14,6 @@ function randomServerName($adjectives, $nouns){
 }
 
 
-// function randomWord($word){
-// 	echo array_rand($adjectives, 1);
-// }
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,15 +30,6 @@ function randomServerName($adjectives, $nouns){
 <body>
 
 <h1><?php echo randomServerName($adjectives, $nouns);?></h1>
-
-
-
-
-
-
-
-
-
 
 
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
