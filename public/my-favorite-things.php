@@ -25,12 +25,12 @@ $myFavoriteThings = ["hockey", "golfing", "music", "movies", "margot robbie"];
 		<th>My Favorite Things</th>
 	</thead>
 	<tbody>
-		<?php foreach ($myFavoriteThings as $number => $favoriteThing) { ?>
+		<?php foreach ($myFavoriteThings as $number => $favoriteThing) : ?>
 			<tr>
-				<th><?php echo ($number+1); ?></th> 
-				<td><?php echo $favoriteThing; ?></td>
+				<th><?= ($number+1); ?></th> 
+				<td><?= $favoriteThing; ?></td>
 			</tr>
-		<?php } ?>
+		<?php endforeach; ?>
 	</tbody>
 </table>
 
