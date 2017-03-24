@@ -1,20 +1,25 @@
 <?php 
 
-$adjectives = ["devilish", "amused", "rough", "sleepy", "curved", "hungry", "fluffy", "sore", "unarmed", "hellish"];
-$nouns = ["computer", "wood", "sofa", "man", "carpenter", "cup", "bottle", "cellar", "ducks", "birthday"];
-
-
-function randomServerName($adjectives, $nouns){
+function makeRandomServerName($adjectives, $nouns){
 	$randomAdjectiveIndex = (array_rand($adjectives, 1));
 	$randomAdjective = $adjectives[$randomAdjectiveIndex];
 	$randomNounIndex = (array_rand($nouns, 1));
 	$randomNoun = $nouns[$randomNounIndex];
-	$randomServerName = "$randomAdjective $randomNoun" . PHP_EOL;
-	return $randomServerName;
+	return "$randomAdjective $randomNoun";
 }
 
+function pageController(){
+	$adjectives = ["devilish", "amused", "rough", "sleepy", "curved", "hungry", "fluffy", "sore", "unarmed", "hellish"];
+	$nouns = ["computer", "wood", "sofa", "man", "carpenter", "cup", "bottle", "cellar", "ducks", "birthday"];
+	$data = [];
+	$data['randomServerName'] = makeRandomServerName($adjectives, $nouns);
+	return $data;
+}
+extract(pageController());
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,8 +33,8 @@ function randomServerName($adjectives, $nouns){
 	<link rel="stylesheet" type="text/css" href="">
 </head>
 <body>
-
-<h1><?= randomServerName($adjectives, $nouns);?></h1>
+	
+	<h1><?= $randomServerName;?></h1>
 
 
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
