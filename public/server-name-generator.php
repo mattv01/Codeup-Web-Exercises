@@ -3,19 +3,21 @@
 $adjectives = ["devilish", "amused", "rough", "sleepy", "curved", "hungry", "fluffy", "sore", "unarmed", "hellish"];
 $nouns = ["computer", "wood", "sofa", "man", "carpenter", "cup", "bottle", "cellar", "ducks", "birthday"];
 
-$randomIndex = (array_rand($adjectives, 1));
-$randomAdjective = $adjectives[$randomIndex];
 
-$randomIndex = (array_rand($nouns, 1));
-$randomNoun = $nouns[$randomIndex];
-
-function randomWord($word){
-	echo array_rand($adjectives, 1);
+function randomServerName($adjectives, $nouns){
+	$randomAdjectiveIndex = (array_rand($adjectives, 1));
+	$randomAdjective = $adjectives[$randomAdjectiveIndex];
+	$randomNounIndex = (array_rand($nouns, 1));
+	$randomNoun = $nouns[$randomNounIndex];
+	$randomServerName = "$randomAdjective $randomNoun" . PHP_EOL;
+	return $randomServerName;
 }
 
-// function randomServerName(){
-// 	echo 
+
+// function randomWord($word){
+// 	echo array_rand($adjectives, 1);
 // }
+
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +34,7 @@ function randomWord($word){
 </head>
 <body>
 
-<h1><?php echo "$randomAdjective $randomNoun";?></h1>
+<h1><?php echo randomServerName($adjectives, $nouns);?></h1>
 
 
 
