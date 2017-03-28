@@ -1,0 +1,10 @@
+Make login form/page
+once user logs in, user chooses which game to join
+once certain game is selected, they can see the table of squares that are already bought or are available to purchase
+once they click on a square they want, user is asked if they are sure they want the box they selected
+if yes, they then are asked to pay for their square
+once payment goes through, their username gets filled into the box they bought (sounds like a POST)
+
+
+*** future feature ***
+- user can outbid a square that was previously bought
