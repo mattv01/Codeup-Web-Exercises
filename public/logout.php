@@ -7,8 +7,12 @@ function clearSession() {
 
 session_start();
 
+require "functions.php";
+
+$username = $_SESSION['logged_in_user'];
+
 //if user navigates to this page without signing in first, take user to login page
-if (!isset($_SESSION['logged_in_user'])) {
+if (!isset($username)) {
 	header("Location: http://codeup.dev/login.php");
 }
 
@@ -16,8 +20,8 @@ if (!isset($_SESSION['logged_in_user'])) {
 clearSession();
 
 //if user clicks login button, take them to the login page
-if (isset($_POST['login'])) {
-	if ($_POST['login'] == 'session') {
+if (inputHas('login')) {
+	if (inputGet('login') == 'session') {
 		header("Location: http://codeup.dev/login.php");
 	}
 }
@@ -36,8 +40,10 @@ if (isset($_POST['login'])) {
 	<link rel="stylesheet" type="text/css" href="">
 </head>
 <body>
+<!-- 
+<h1 class="btn-success">Logout Successful</h1> -->
+<h1 class="btn-success"><?=$username?> has successfully logged out</h1>
 
-<h1 class="btn-success">Logout Successful</h1>
 <form method="POST">
 	<button type="submit" name="login" value="session">Login</button>
 </form>

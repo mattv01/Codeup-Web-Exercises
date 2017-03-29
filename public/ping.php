@@ -1,10 +1,11 @@
 <?php 
 
+require "functions.php";
+
 function pageController(){
-	if (!isset($_GET['hitcount'])) {
-		$_GET['hitcount'] = 0;
-	}
-	return $_GET;
+	$data = [];
+	$data['hitcount'] = inputGet('hitcount');
+	return $data;
 }
 extract(pageController());
 
@@ -23,7 +24,7 @@ extract(pageController());
 	<link rel="stylesheet" type="text/css" href="">
 </head>
 <body>
-
+<!-- 0 doesn't show when first loading the page because hitcount is set to null from functions.php (inputGet) -->
 <h1><?=$hitcount?></h1>
 
 <form method="GET">

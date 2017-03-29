@@ -2,15 +2,17 @@
 
 session_start();
 
+require "functions.php";
+
 $username = $_SESSION['logged_in_user'];
 
 //if user is not logged in, take user to login page
-if (!isset($_SESSION['logged_in_user'])) {
+if (!isset($username)) {
 	header("Location: http://codeup.dev/login.php");
 }
 //if logout button is clicked, take user to logout page
-if (isset($_POST['logout'])) {
-	if ($_POST['logout'] == 'session') {
+if (inputHas('logout')) {
+	if (inputGet('logout') == 'session') {
 		header("Location: http://codeup.dev/logout.php");
 	}
 }
@@ -29,12 +31,14 @@ if (isset($_POST['logout'])) {
 	<link rel="stylesheet" type="text/css" href="">
 </head>
 <body>
-
+<?php require "navbar.php";?>
 <h1>Authorized</h1>
-<h2>Hello, <?=$username?>!</h2>
-<form method="POST">
-	<button type="submit" name="logout" value="session">Logout</button>
-</form>
+<h2>Welcome, <?=$username?></h2>
+<?php 
+require "header.php";
+require "footer.php";
+?>
+
 
  <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

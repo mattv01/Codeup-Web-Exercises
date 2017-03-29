@@ -1,8 +1,10 @@
 <?php 
 session_start();
 
-$username = isset($_POST['username']) ? htmlspecialchars(strip_tags($_POST['username'])) : 'Guest';
-$password = isset($_POST['password']) ? htmlspecialchars(strip_tags($_POST['password'])) : '';
+require "functions.php";
+
+$username = inputGet('username');
+$password = inputGet('password');
 
 if ($username == "mattv01" && $password == "ducks0101") {
 	$_SESSION['logged_in_user'] = $username;
@@ -28,7 +30,6 @@ if (isset($_SESSION['logged_in_user'])) {
 	header("Location: http://codeup.dev/authorized.php");
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -42,8 +43,10 @@ if (isset($_SESSION['logged_in_user'])) {
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!--<link rel="stylesheet" href="css/font-awesome.min.css">--> 
 	<link rel="stylesheet" type="text/css" href="">
+	<style>form{margin-top: 20%;margin-left: 30%;width: 50%;}</style>
 </head>
 <body>
+
 
 <form action="login.php" method="post">
 	<label for="username">Username:</label>
