@@ -1,10 +1,11 @@
 <?php 
 
 require "functions.php";
+require_once "../Input.php";
 
 function pageController(){
 	$data = [];
-	$data['hitcount'] = inputGet('hitcount');
+	$data['hitcount'] = Input::get('hitcount');
 	return $data;
 }
 extract(pageController());
@@ -25,7 +26,7 @@ extract(pageController());
 </head>
 <body>
 <!-- 0 doesn't show when first loading the page because hitcount is set to null from functions.php (inputGet) -->
-<h1><?=$hitcount?></h1>
+<h1><?=escape($hitcount)?></h1>
 
 <form method="GET">
 	<a href="/ping.php?HIT&hitcount=<?=$hitcount+1?>"><button type="button" class="btn-success">HIT</button></a>
