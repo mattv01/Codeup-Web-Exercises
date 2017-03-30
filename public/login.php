@@ -2,6 +2,20 @@
 session_start();
 
 require "functions.php";
+require_once "Auth.php";
+require_once "Input.php";
+
+
+
+	Auth::attempt($username, $password) 
+	Auth::check()
+	Auth::user() 
+	Auth::logout()
+
+
+
+
+
 
 $username = inputGet('username');
 $password = inputGet('password');

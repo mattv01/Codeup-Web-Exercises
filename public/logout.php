@@ -8,6 +8,8 @@ function clearSession() {
 session_start();
 
 require "functions.php";
+require_once "Auth.php";
+require_once "Input.php";
 
 $username = $_SESSION['logged_in_user'];
 
