@@ -11,21 +11,21 @@ class Log {
 		$this->handle = fopen($this->filename, 'a');
 	}
 
-	public function logMessage($logLevel, $message)
+	public function logMessage($message)
 	{
 		$timestamp = date("Y-m-d h:i:s");
-		fwrite($this->handle, PHP_EOL . "$timestamp [$logLevel] $message");
+		fwrite($this->handle, PHP_EOL . "$timestamp $message");
 	}
 
-	public function logInfo($logLevel, $message)
+	public function logInfo($message)
 	{
-		$this->logMessage($logLevel, $message);
+		$this->logMessage($message);
 	}
 
 
-	public function logError($logLevel, $message)
+	public function logError($message)
 	{
-		$this->logMessage($logLevel, $message);
+		$this->logMessage($message);
 	}
 
 	public function __destruct()
