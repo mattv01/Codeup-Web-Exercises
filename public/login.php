@@ -2,28 +2,22 @@
 session_start();
 
 require "functions.php";
-require_once "Auth.php";
-require_once "Input.php";
-
-
-
-	Auth::attempt($username, $password) 
-	Auth::check()
-	Auth::user() 
-	Auth::logout()
-
-
-
-
+require_once "../Auth.php";
+require_once "../Input.php";
 
 
 $username = inputGet('username');
 $password = inputGet('password');
+	
+Auth::attempt($username, $password);
 
 if ($username == "mattv01" && $password == "ducks0101") {
 	$_SESSION['logged_in_user'] = $username;
 	header("Location: http://codeup.dev/authorized.php");
 }
+	// Auth::check()
+	// Auth::user() 
+	// Auth::logout()
 
 function errorMessage($username, $password){
 	if (!empty($_POST)) {
