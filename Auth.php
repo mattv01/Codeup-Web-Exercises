@@ -1,13 +1,16 @@
 <?php  
 
-require_once "Log.php";
+require_once "../vagrant-lamp/exercises/Log.php";
 
 class Auth {
 
 	public static $password = '$2y$10$SLjwBwdOVvnMgWxvTI4Gb.YVcmDlPTpQystHMO2Kfyi/DS8rgA0Fm';
 	
 	public function attempt($username, $password) {
-	
+		if ($username == "guest" && $password == password_verify("password", $password)) {
+			$_SESSION['logged_in_user'] = $username;
+			header("Location: http://codeup.dev/authorized.php");
+		}
 	}
 
 	public function check(){
@@ -17,7 +20,7 @@ class Auth {
 	public function user() {
 	
 	}
-	
+
 	public function logout(){
 	
 	}
