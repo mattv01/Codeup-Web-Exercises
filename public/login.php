@@ -4,39 +4,41 @@ session_start();
 require "functions.php";
 require_once "../Auth.php";
 require_once "../Input.php";
+require_once "../Log.php";
 
-
-$username = inputGet('username');
-$password = inputGet('password');
-	
-Auth::attempt($username, $password);
-
-if ($username == "mattv01" && $password == "ducks0101") {
-	$_SESSION['logged_in_user'] = $username;
+if (Auth::check()) {
 	header("Location: http://codeup.dev/authorized.php");
 }
-	// Auth::check()
-	// Auth::user() 
-	// Auth::logout()
 
-function errorMessage($username, $password){
-	if (!empty($_POST)) {
-		if ($username !== "mattv01" && $password !== "ducks0101") {
-			$message = "Oops, incorrect username and password";
-			return $message;
-		} elseif ($username !== "mattv01") {
-			$message = "Oops, incorrect username was given";
-			return $message;
-		} elseif ($password !== "ducks0101") {
-			$message = "Oops, incorrect password was given";
-			return $message;
-		}
-	}
-}
 
-if (isset($_SESSION['logged_in_user'])) {
-	header("Location: http://codeup.dev/authorized.php");
-}
+$username = Input::get('username');
+$password = Input::get('password'); 
+
+// if (Auth::attempt($username, $password)){
+// 	header("Location: http://codeup.dev/authorized.php");
+// }
+
+// Auth::attempt($username, $password);
+
+
+
+// if ($username == "guest" && $password == password_verify($password, static::$password)) {
+// 			$_SESSION['logged_in_user'] = $username;
+// 			header("Location: http://codeup.dev/authorized.php");
+// 		} elseif ($username == "mattv01" && $password == "ducks0101") {
+// 			$_SESSION['logged_in_user'] = $username;
+// 			header("Location: http://codeup.dev/authorized.php");
+// 		} elseif (!empty($_POST)) {
+// 			$log = new Log();
+// 			// $message = "$username failed to login";
+// 			$log->logError("$username failed to login");
+// 			$message = "Oops, incorrect username or password given";
+// 			return $message;
+// 		}
+
+
+
+
 
 ?>
 
@@ -63,9 +65,10 @@ if (isset($_SESSION['logged_in_user'])) {
 	<input type="password" name="password">
 	<button type="submit">Login</button>
 </form>
-<h4><?=errorMessage($username, $password)?></h2>
+<!-- shows message if user submits incorrect credentials -->
+<h4><?=Auth::attempt($username, $password)?></h4>
 
-<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+ <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>

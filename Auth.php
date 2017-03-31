@@ -6,32 +6,46 @@ class Auth {
 
 	public static $password = '$2y$10$SLjwBwdOVvnMgWxvTI4Gb.YVcmDlPTpQystHMO2Kfyi/DS8rgA0Fm';
 	
-	public function attempt($username, $password) {		
-		if ($username == "guest" && $password == password_verify("password", $password)) {
+	public static function attempt($username, $password) {		
+		if ($username == "guest" && $password == password_verify($password, static::$password)) {
 			$_SESSION['logged_in_user'] = $username;
 			header("Location: http://codeup.dev/authorized.php");
+		} elseif ($username == "mattv01" && $password == "ducks0101") {
+			$_SESSION['logged_in_user'] = $username;
+			header("Location: http://codeup.dev/authorized.php");
+		} elseif (!empty($_POST)) {
+			$log = new Log();
+			$log->logError("$username failed to login");
+			$message = "Oops, incorrect username or password given";
+			return $message;
+		} 	
+	}
+
+	// public static function attempt($username, $password) {		
+	// 	if ($username == "guest" && $password == password_verify($password, static::$password)) {
+	// 		$_SESSION['logged_in_user'] = $username;
+	// 		return true;
+	// 	} elseif ($username == "mattv01" && $password == "ducks0101") {
+	// 		$_SESSION['logged_in_user'] = $username;
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	}	
+	// }
+
+	public static function check(){
+		return isset($_SESSION['logged_in_user']);
+	}
+
+	public static function user() {
+		if (self::check()) {
+			return $_SESSION['logged_in_user'];
 		}
 	}
 
-	public function check(){
-	
+	public static function logout(){
+		session_unset();
+		session_regenerate_id(true);
 	}
-
-	public function user() {
-	
-	}
-
-	public function logout(){
-	
-	}
-
 
 }
-
-// Auth::attempt() will take in a $username and $password. If the $username is guest and the $password matches the hashed password above then set the LOGGED_IN_USER session variable as before. Use the Log class to log an info message: "User $username logged in.". If either the username or password are incorrect then log an error: "User $username failed to log in!". You will need to use the PHP method password_verify() to check the password hash.
-
-// Auth::check() will return a boolean whether or not a user is logged in.
-
-// Auth::user() will return the username of the currently logged in user.
-
-// Auth::logout() will end the session, just like we did in the sessions exercise.

@@ -1,34 +1,29 @@
 <?php 
 
-function clearSession() {
-	session_unset();
-	session_regenerate_id(true);
-}
+require "functions.php";
+require_once "../Auth.php";
+require_once "../Input.php";
 
 session_start();
 
-require "functions.php";
-require_once "Auth.php";
-require_once "Input.php";
-
-$username = $_SESSION['logged_in_user'];
+$username = Auth::user();
 
 //if user navigates to this page without signing in first, take user to login page
-if (!isset($username)) {
+if (!Auth::check()) {
 	header("Location: http://codeup.dev/login.php");
 }
 
 //clear session if user has been navigated to this page
-clearSession();
+Auth::logout();
 
 //if user clicks login button, take them to the login page
-if (inputHas('login')) {
-	if (inputGet('login') == 'session') {
-		header("Location: http://codeup.dev/login.php");
-	}
+if (Input::has('login')) {
+	header("Location: http://codeup.dev/login.php");
 }
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,12 +37,10 @@ if (inputHas('login')) {
 	<link rel="stylesheet" type="text/css" href="">
 </head>
 <body>
-<!-- 
-<h1 class="btn-success">Logout Successful</h1> -->
 <h1 class="btn-success"><?=$username?> has successfully logged out</h1>
 
 <form method="POST">
-	<button type="submit" name="login" value="session">Login</button>
+	<button type="submit" name="login">Login</button>
 </form>
 
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>

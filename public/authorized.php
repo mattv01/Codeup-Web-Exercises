@@ -1,25 +1,25 @@
 <?php
 
+require "functions.php";
+require_once "../Auth.php";
+require_once "../Input.php";
+
 session_start();
 
-require "functions.php";
-require_once "Auth.php";
-require_once "Input.php";
-
-$username = $_SESSION['logged_in_user'];
-
+//check if user is logged in; 
 //if user is not logged in, take user to login page
-if (!isset($username)) {
+if (!Auth::check()) {
 	header("Location: http://codeup.dev/login.php");
 }
+
 //if logout button is clicked, take user to logout page
-if (inputHas('logout')) {
-	if (inputGet('logout') == 'session') {
-		header("Location: http://codeup.dev/logout.php");
-	}
+if (Input::has('logout')) {
+	header("Location: http://codeup.dev/logout.php");
 }
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +35,7 @@ if (inputHas('logout')) {
 <body>
 <?php require "navbar.php";?>
 <h1>Authorized</h1>
-<h2>Welcome, <?=$username?></h2>
+<h2>Welcome, <?= Auth::user()?></h2>
 <?php 
 require "header.php";
 require "footer.php";
