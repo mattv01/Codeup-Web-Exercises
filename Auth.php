@@ -1,6 +1,6 @@
 <?php  
 
-require_once "../vagrant-lamp/exercises/Log.php";
+require_once "Log.php";
 
 class Auth {
 
