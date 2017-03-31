@@ -5,7 +5,7 @@ require_once "../Input.php";
 
 function pageController(){
 	$data = [];
-	$data['hitcount'] = Input::get('hitcount');
+	$data['hitcount'] = Input::get('hitcount', 0);
 	return $data;
 }
 extract(pageController());
