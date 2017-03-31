@@ -7,7 +7,7 @@ class Auth {
 	public static $password = '$2y$10$SLjwBwdOVvnMgWxvTI4Gb.YVcmDlPTpQystHMO2Kfyi/DS8rgA0Fm';
 	
 	public function attempt($username, $password) {
-	
+		
 	}
 
 	public function check(){
@@ -24,7 +24,6 @@ class Auth {
 
 
 }
-
 
 // Auth::attempt() will take in a $username and $password. If the $username is guest and the $password matches the hashed password above then set the LOGGED_IN_USER session variable as before. Use the Log class to log an info message: "User $username logged in.". If either the username or password are incorrect then log an error: "User $username failed to log in!". You will need to use the PHP method password_verify() to check the password hash.
 
