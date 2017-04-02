@@ -1,25 +1,32 @@
 <?php 
 
-require "functions.php";
+require_once "functions.php";
 require_once "../Auth.php";
 require_once "../Input.php";
+require_once "../Log.php";
 
 session_start();
-
-$username = Auth::user();
 
 //if user navigates to this page without signing in first, take user to login page
 if (!Auth::check()) {
 	header("Location: http://codeup.dev/login.php");
+	die();
 }
 
-//clear session if user has been navigated to this page
-Auth::logout();
+$username = Auth::user();
 
-//if user clicks login button, take them to the login page
-if (Input::has('login')) {
-	header("Location: http://codeup.dev/login.php");
+function pageController($username){
+	//if user clicks login button, take them to the login page
+	if (Input::has('login')) {
+		header("Location: http://codeup.dev/login.php");
+	} else {
+		Auth::logout();
+		$log = new Log();
+		$log->logInfo("$username has logged out successfully.");
+	}
 }
+pageController($username);
+
 
 ?>
 
@@ -37,11 +44,11 @@ if (Input::has('login')) {
 	<link rel="stylesheet" type="text/css" href="">
 </head>
 <body>
-<h1 class="btn-success"><?=$username?> has successfully logged out</h1>
-
-<form method="POST">
-	<button type="submit" name="login">Login</button>
-</form>
+	<h1 class="btn-success"><?=$username?> has successfully logged out</h1>
+	
+	<form method="POST">
+		<button type="submit" name="login">Login</button>
+	</form>
 
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
