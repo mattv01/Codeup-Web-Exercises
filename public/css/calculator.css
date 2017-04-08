@@ -166,11 +166,5 @@ input {
 
 }
 
-
-@media (min-width:1680px) { 
-input {
-	width: 14%;
-}
-
 }
 /******************************  END OF DESKTOP STYLES   ********************************/
