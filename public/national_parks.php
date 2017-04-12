@@ -40,6 +40,7 @@ $parks = $statement->fetchAll(PDO::FETCH_ASSOC);
 		<th>Location</th>
 		<th>Date Established</th>
 		<th>Area in Acres</th>
+		<th>Description</th>
 	</tr>
 	<?php foreach($parks as $park): ?>
 		<tr>
@@ -47,6 +48,7 @@ $parks = $statement->fetchAll(PDO::FETCH_ASSOC);
 			<td><?= $park['location']?></td>
 			<td><?= $park['date_established']?></td>
 			<td><?= $park['area_in_acres']?></td>
+			<td><?= $park['description']?></td>
 		</tr>
 	<?php endforeach; ?>
 </table>
