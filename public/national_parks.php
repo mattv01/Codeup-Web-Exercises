@@ -73,8 +73,8 @@ if (!empty($_POST)) {
 		</ul>
 	</form>
 	<form method="GET">	
-			<a href="/national_parks.php?page=1">First Page</a>
-			<a href="/national_parks.php?page=<?=$lastPage?>">Last Page</a>
+			<a href="/national_parks.php?page=1"<?php if ($page == 1): ?>style="color: grey;"<?php endif; ?>>First Page</a>
+			<a href="/national_parks.php?page=<?=$lastPage?>"<?php if ($page == $lastPage): ?>style="color: grey;"<?php endif; ?> class="pull-right">Last Page</a>
 	</form>
 
 	<div id="table">
@@ -99,7 +99,7 @@ if (!empty($_POST)) {
 	</div>
 
 	<!-- Trigger the modal with a button -->
-	<a type="button" href="" data-toggle="modal" data-target="#createNewPark"><i class="fa fa-plus"></i>Add New Park</a>
+	<a type="button" class="btn btn-primary" href="" data-toggle="modal" data-target="#createNewPark"><i class="fa fa-plus"></i>Add New Park</a>
 
 
 	<!-- Adding New Park Modal -->
@@ -145,6 +145,13 @@ if (!empty($_POST)) {
 							<div class="form-group col-xs-12 floating-label-form-group controls">
 								<label for="parkDesc">Park Description</label>
 								<textarea rows="4" class="form-control" placeholder="Park Description" name="parkDesc" id="parkDesc" required data-validation-required-message="Please enter a description of the park."></textarea>
+								<p class="help-block text-danger"></p>
+							</div>
+						</div>
+						<div class="row control-group">
+							<div class="form-group col-xs-12 floating-label-form-group controls">
+								<label for="parkDesc">Park Image</label>
+								<input type="file" class="form-control" placeholder="Park Image" name="parkImage" id="parkImage"></input type="file" name="">
 								<p class="help-block text-danger"></p>
 							</div>
 						</div>
