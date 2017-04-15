@@ -46,9 +46,7 @@ if (!empty($_POST)) {
     header("location: national_parks.php?page=$lastPage");
 }
 
-
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,108 +61,99 @@ if (!empty($_POST)) {
 	<link rel="stylesheet" type="text/css" href="/css/national_parks.css">
 </head>
 <body>
-
-	<h1>National Parks</h1>
-
-	<form method="GET">	
-		<ul class="pagination">
-			<li><a <?php if ($page <= 1): ?>style="color: grey;"<?php endif; ?> href="/national_parks.php?page=<?=$page-1?>">Previous</a></li>
-			<li><a <?php if ($page >= $lastPage): ?>style="color: grey;"<?php endif; ?> href="/national_parks.php?page=<?=$page+1?>">Next</a></li>
-		</ul>
-	</form>
-	<form method="GET">	
-			<a href="/national_parks.php?page=1"<?php if ($page == 1): ?>style="color: grey;"<?php endif; ?>>First Page</a>
-			<a href="/national_parks.php?page=<?=$lastPage?>"<?php if ($page == $lastPage): ?>style="color: grey;"<?php endif; ?> class="pull-right">Last Page</a>
-	</form>
-
-	<div id="table">
-		<table class="table table-hover table-responsive">
-			<tr>
-				<th>Name</th>
-				<th>Location</th>
-				<th>Date Established</th>
-				<th>Area in Acres</th>
-				<th>Description</th>
-			</tr>
-			<?php foreach($parks as $park): ?>
+	<header>
+		<h1>National Parks</h1>
+		<h6>Double Click to go back</h6>
+	</header>
+	<main>
+		<form method="GET">	
+			<ul class="pagination">
+				<li><a <?php if ($page <= 1): ?>style="color: grey;"<?php endif; ?> href="/national_parks.php?page=<?=$page-1?>">Previous</a></li>
+				<li><a <?php if ($page >= $lastPage): ?>style="color: grey;"<?php endif; ?> href="/national_parks.php?page=<?=$page+1?>">Next</a></li>
+			</ul>
+		</form>
+		<form method="GET">	
+				<a href="/national_parks.php?page=1"<?php if ($page == 1): ?>style="color: grey;"<?php endif; ?>>First Page</a>
+				<a href="/national_parks.php?page=<?=$lastPage?>"<?php if ($page == $lastPage): ?>style="color: grey;"<?php endif; ?> class="pull-right">Last Page</a>
+		</form>
+		<div id="table">
+			<table class="table table-hover table-responsive">
 				<tr>
-					<td><?= $park['name']?></td>
-					<td><?= $park['location']?></td>
-					<td><?= $park['date_established']?></td>
-					<td><?= $park['area_in_acres']?></td>
-					<td><?= $park['description']?></td>
+					<th>Name</th>
+					<th>Location</th>
+					<th>Date Established</th>
+					<th>Area in Acres</th>
+					<th>Description</th>
 				</tr>
-			<?php endforeach; ?>
-		</table>
-	</div>
-
-	<!-- Trigger the modal with a button -->
-	<a type="button" class="btn btn-primary" href="" data-toggle="modal" data-target="#createNewPark"><i class="fa fa-plus"></i>Add New Park</a>
-
-
-	<!-- Adding New Park Modal -->
-	<div id="createNewPark" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Adding New Park</h4>
-				</div>
-				<div class="modal-body">
-					<form  method="POST">
-						<div class="row control-group">
-							<div class="form-group col-xs-12 floating-label-form-group controls">
-								<label for="parkName">Park Name</label>
-								<input type="text" class="form-control" placeholder="Park Name" name="parkName" id="parkName" required data-validation-required-message="Please enter the park name.">
-								<p class="help-block text-danger"></p>
+				<?php foreach($parks as $park): ?>
+					<tr>
+						<td id="name"><?= $park['name']?></td>
+						<td><?= $park['location']?></td>
+						<td><?= $park['date_established']?></td>
+						<td><?= $park['area_in_acres']?></td>
+						<td><?= $park['description']?></td>
+					</tr>
+				<?php endforeach; ?>
+			</table>
+		</div>
+		<!-- Trigger the modal with a button -->
+		<a type="button" class="btn btn-primary" href="" data-toggle="modal" data-target="#createNewPark"><i class="fa fa-plus"></i>Add New Park</a>
+		<!-- Adding New Park Modal -->
+		<div id="createNewPark" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Adding New Park</h4>
+					</div>
+					<div class="modal-body">
+						<form  method="POST">
+							<div class="row control-group">
+								<div class="form-group col-xs-12 floating-label-form-group controls">
+									<label for="parkName">Park Name</label>
+									<input type="text" class="form-control" placeholder="Park Name" name="parkName" id="parkName" required data-validation-required-message="Please enter the park name.">
+									<p class="help-block text-danger"></p>
+								</div>
 							</div>
-						</div>
-						<div class="row control-group">
-							<div class="form-group col-xs-12 floating-label-form-group controls">
-								<label for="parkLocation">Park Location</label>
-								<input type="text" class="form-control" placeholder="Park Location" name="parkLocation" id="parkLocation" required data-validation-required-message="Please enter the park location.">
-								<p class="help-block text-danger"></p>
+							<div class="row control-group">
+								<div class="form-group col-xs-12 floating-label-form-group controls">
+									<label for="parkLocation">Park Location</label>
+									<input type="text" class="form-control" placeholder="Park Location" name="parkLocation" id="parkLocation" required data-validation-required-message="Please enter the park location.">
+									<p class="help-block text-danger"></p>
+								</div>
 							</div>
-						</div>
-						<div class="row control-group">
-							<div class="form-group col-xs-12 floating-label-form-group controls">
-								<label for="parkDate">Date Established</label>
-								<input type="date" class="form-control" placeholder="YYYY-MM-DD" name="parkDate" id="parkDate" required data-validation-required-message="Please enter the date the park was established.">
-								<p class="help-block text-danger"></p>
+							<div class="row control-group">
+								<div class="form-group col-xs-12 floating-label-form-group controls">
+									<label for="parkDate">Date Established</label>
+									<input type="date" class="form-control" placeholder="YYYY-MM-DD" name="parkDate" id="parkDate" required data-validation-required-message="Please enter the date the park was established.">
+									<p class="help-block text-danger"></p>
+								</div>
 							</div>
-						</div>
-						<div class="row control-group">
-							<div class="form-group col-xs-12 floating-label-form-group controls">
-								<label for="parkArea">Area in Acres</label>
-								<input type="text" class="form-control" placeholder="ex: 1111.11" name="parkArea" id="parkArea" required data-validation-required-message="Please enter the park's area in acres.">
-								<p class="help-block text-danger"></p>
+							<div class="row control-group">
+								<div class="form-group col-xs-12 floating-label-form-group controls">
+									<label for="parkArea">Area in Acres</label>
+									<input type="text" class="form-control" placeholder="ex: 1111.11" name="parkArea" id="parkArea" required data-validation-required-message="Please enter the park's area in acres.">
+									<p class="help-block text-danger"></p>
+								</div>
 							</div>
-						</div>
-						<div class="row control-group">
-							<div class="form-group col-xs-12 floating-label-form-group controls">
-								<label for="parkDesc">Park Description</label>
-								<textarea rows="4" class="form-control" placeholder="Park Description" name="parkDesc" id="parkDesc" required data-validation-required-message="Please enter a description of the park."></textarea>
-								<p class="help-block text-danger"></p>
+							<div class="row control-group">
+								<div class="form-group col-xs-12 floating-label-form-group controls">
+									<label for="parkDesc">Park Description</label>
+									<textarea rows="4" class="form-control" placeholder="Park Description" name="parkDesc" id="parkDesc" required data-validation-required-message="Please enter a description of the park."></textarea>
+									<p class="help-block text-danger"></p>
+								</div>
 							</div>
-						</div>
-						<div class="row control-group">
-							<div class="form-group col-xs-12 floating-label-form-group controls">
-								<label for="parkDesc">Park Image</label>
-								<input type="file" class="form-control" placeholder="Park Image" name="parkImage" id="parkImage"></input type="file" name="">
-								<p class="help-block text-danger"></p>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-default btn-success pull-left">Add Park</button>
+								<button type="button" class="btn btn-default btn-danger pull-right" data-dismiss="modal">Cancel</button>
 							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-default btn-success">Add Park</button>
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-
+	</main>
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8yU5lRs-GOxQhZ7boYDTdveBQds32R0c"></script>
