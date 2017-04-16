@@ -91,7 +91,7 @@ if (!empty($_POST)) {
 						<td><?= $park['location']?></td>
 						<td><?= $park['date_established']?></td>
 						<td><?= $park['area_in_acres']?></td>
-						<td><?= $park['description']?></td>
+						<td style="width: 50%"><?= $park['description']?></td>
 					</tr>
 				<?php endforeach; ?>
 			</table>
