@@ -6,7 +6,7 @@ h1 {
 }
 
 h6 {
-	opacity: 0;
+	display: none;
 	text-align: center;
 }
 
