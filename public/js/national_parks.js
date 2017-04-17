@@ -3,7 +3,7 @@
 
 	$("td#name").click(function(){
 		$("main").css({"display":"none"});
-		$("body").css("background-image", "url('/img/parks/"+this.innerText+".jpg')");
+		$("body").css("background-image", "url('/img/parks/"+this.innerText.split(' ').join('_')+".jpg')");
 		$("h1").html(this.innerText).css({"color":"white", "opacity":"0.5", "background-color":"black"});
 		$("h6").css({"display":"block"});
 	});
