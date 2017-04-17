@@ -30,21 +30,48 @@ function pageController() {
 	$data['parks'] = Park::paginate($page, $limit);;
 	$data['page'] = $page;
 	$data['lastPage'] = $lastPage;
+	$data['errors'] = [];
+	if (!empty($_POST)) {
+		$park = new Park();
+
+		try {
+			$park->name = Input::getString("parkName");
+		} catch (Exception $e) {
+			$data['errors'][] = $e->getMessage();
+		}
+
+		try {
+			$park->location = Input::getString("parkLocation");
+		} catch (Exception $e) {
+			$data['errors'][] = $e->getMessage();
+		}
+
+		try {
+			$park->areaInAcres = Input::getNumber("parkArea");
+		} catch (Exception $e) {
+			$data['errors'][] = $e->getMessage();
+		}
+
+		try {
+			$park->dateEstablished = Input::get("parkDate");
+		} catch (Exception $e) {
+			$data['errors'][] = $e->getMessage();
+		}
+
+		try {
+			$park->description = Input::getString("parkDesc");
+		} catch (Exception $e) {
+			$data['errors'][] = $e->getMessage();
+		}
+
+		if (empty($data['errors'])) {
+			$park->insert(); 
+		    header("location: national_parks.php?page=$lastPage");
+		}
+	}
 	return $data;
 }
 extract(pageController());
-
-
-if (!empty($_POST)) {
-	$park = new Park();
-	$park->name = htmlspecialchars(strip_tags(Input::get("parkName")));
-	$park->location = htmlspecialchars(strip_tags(Input::get("parkLocation")));
-	$park->areaInAcres = htmlspecialchars(strip_tags(Input::get("parkArea")));
-	$park->dateEstablished = htmlspecialchars(strip_tags(Input::get("parkDate")));
-	$park->description = htmlspecialchars(strip_tags(Input::get("parkDesc")));
-	$park->insert(); 
-    header("location: national_parks.php?page=$lastPage");
-}
 
 ?>
 <!DOCTYPE html>
@@ -98,6 +125,10 @@ if (!empty($_POST)) {
 		</div>
 		<!-- Trigger the modal with a button -->
 		<a type="button" class="btn btn-primary" href="" data-toggle="modal" data-target="#createNewPark"><i class="fa fa-plus"></i>Add New Park</a>
+
+		<!-- Display Errors if any when adding a new park -->
+		<?php if (empty($data['errors'])):?><?php foreach($errors as $error): ?><ul><li><?=$error?></li></ul><?php endforeach; ?><?php endif; ?>
+
 		<!-- Adding New Park Modal -->
 		<div id="createNewPark" class="modal fade" role="dialog">
 			<div class="modal-dialog">
